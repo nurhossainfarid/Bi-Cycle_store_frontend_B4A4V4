@@ -12,6 +12,7 @@ const Title = ({
   text,
   fontSize = "lg",
   color = "rgb(240, 240, 240)",
+  textAlign = "center",
 }: TitleProps) => {
   return (
     <h1
@@ -20,6 +21,7 @@ const Title = ({
         fontWeight: 500,
         fontSize: TFontSizeMap[fontSize],
         color: color,
+        textAlign: textAlign,
         lineHeight: "1.2",
       }}
     >

@@ -12,7 +12,7 @@ const MainLayout = () => {
   return (
     <div
       className={cn(
-        "pt-2 pb-10 px-20",
+        "md:pt-2 pb-5 md:pb-10 px-5 md:px-10 lg:px-20",
         theme === "dark" ? "bg-midnight-eclipse" : `bg-${bgColor}`
       )}
     >

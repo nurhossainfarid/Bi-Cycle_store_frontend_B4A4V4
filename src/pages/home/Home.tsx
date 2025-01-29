@@ -6,7 +6,7 @@ const Home = () => {
   const { textColor } = themeHandler({ theme });
 
   return (
-    <div className="flex flex-col items-center justify-center my-10">
+    <div className="flex flex-col items-center justify-center my-5">
       <Carousel />
     </div>
   );
