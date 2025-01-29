@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
-import Header from "../header/Header";
 import { useTheme } from "@/providers/theme-provider";
 import { cn } from "@/lib/utils";
 import { themeHandler } from "@/utils/themeHandler";
 import Footer from "../footer/Footer";
+import Navbar from "../header/Navbar";
 
 const MainLayout = () => {
   const { theme } = useTheme();
@@ -16,11 +16,9 @@ const MainLayout = () => {
         theme === "dark" ? "bg-midnight-eclipse" : `bg-${bgColor}`
       )}
     >
-      <div>
-        <Header />
-      </div>
-      <Footer />
+      <Navbar />
       <Outlet />
+      <Footer />
     </div>
   );
 };

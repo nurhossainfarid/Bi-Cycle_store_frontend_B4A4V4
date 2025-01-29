@@ -2,7 +2,7 @@ export const themeHandler = ({ theme }: { theme: string }) => {
   let textColor = "white";
   let bgColor = "black";
   if (theme === "dark") {
-    textColor = "#FAFAFA";
+    textColor = "white";
   } else {
     textColor = "black";
     bgColor = "#FAFAFA";

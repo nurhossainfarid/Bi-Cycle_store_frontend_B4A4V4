@@ -1,4 +1,11 @@
-export const headerMenu = ["Home", "About", "Blog", "Pages", "Contact"];
+export const headerMenu = [
+  { label: "Home", value: "" },
+  { label: "About", value: "about" },
+  { label: "All Bicycles", value: "all-bicycles" },
+  { label: "Dashboard", value: "dashboard" },
+  { label: "Contact", value: "contact" },
+];
+
 
 import Logo1 from "../assets/Logo.png";
 import Logo2 from "../assets/Logo2.png";

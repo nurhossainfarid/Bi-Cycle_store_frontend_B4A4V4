@@ -1,10 +1,7 @@
-import { CirclePlay } from "lucide-react";
-import Title from "../ui/title";
-import Paragraph from "../ui/paragraph";
-import { Button } from "../ui/button";
 import { themeHandler } from "@/utils/themeHandler";
 import { useTheme } from "@/providers/theme-provider";
-const NavbarContent = () => {
+import Title from "@/components/ui/title";
+const Home = () => {
   const { theme } = useTheme();
   const { textColor } = themeHandler({ theme });
 
@@ -40,4 +37,4 @@ const NavbarContent = () => {
   );
 };
 
-export default NavbarContent;
+export default Home;
