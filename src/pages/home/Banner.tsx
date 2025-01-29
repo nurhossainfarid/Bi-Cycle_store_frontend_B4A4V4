@@ -3,50 +3,10 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { bicycles } from "@/constants";
+import { Button } from "@/components/ui/button";
 
-import CCycle1 from "../../images/c-cycle1.jpg";
-import CCycle2 from "../../images/c-cycle2.jpg";
-import CCycle6 from "../../images/c-cycle6.jpg";
-import Title from "../ui/title";
-import Paragraph from "../ui/paragraph";
-import { Button } from "../ui/button";
-
-const BicycleCarousel = () => {
-  interface Bicycle {
-    id: number;
-    name: string;
-    description: string;
-    brand: string;
-    image: string;
-  }
-
-  const bicycles: Bicycle[] = [
-    {
-      id: 1,
-      name: "On-Road, Off-Road, Any Road",
-      description:
-        "It's the most advanced, best performing alloy race bike ever made. Fitting, since aluminum is the 13th element.",
-      brand: "Trek",
-      image: CCycle1,
-    },
-    {
-      id: 2,
-      name: "Break Free From The Same Roads",
-      description:
-        "Don’t overthink it. Mellow to mad. Wild to mild. Whatever your trail riding style, Habit’s got what you need.",
-      brand: "Giant",
-      image: CCycle2,
-    },
-    {
-      id: 3,
-      name: "On-Road, Break Free From The Same Roads",
-      description:
-        "A perfect blend of road and mountain bike features. Whatever your trail riding style, Habit’s got what you need.",
-      brand: "Specialized",
-      image: CCycle6,
-    },
-  ];
-
+const Banner = () => {
   return (
     <div className="relative w-full mx-auto">
       <Swiper
@@ -90,4 +50,4 @@ const BicycleCarousel = () => {
   );
 };
 
-export default BicycleCarousel;
+export default Banner;
