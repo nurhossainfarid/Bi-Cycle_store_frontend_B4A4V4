@@ -1,11 +1,11 @@
 import Navbar from "./Navbar";
 import NavbarContent from "./NavbarContent";
 
-const Header = ({ theme }) => {
+const Header = () => {
   return (
     <div>
-      <Navbar theme={theme} />
-      <NavbarContent theme={theme} />
+      <Navbar  />
+      <NavbarContent />
       <hr />
     </div>
   );

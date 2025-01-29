@@ -3,7 +3,9 @@ import Title from "../ui/title";
 import Paragraph from "../ui/paragraph";
 import { Button } from "../ui/button";
 import { themeHandler } from "@/utils/themeHandler";
-const NavbarContent = ({ theme }) => {
+import { useTheme } from "@/providers/theme-provider";
+const NavbarContent = () => {
+  const { theme } = useTheme();
   const { textColor } = themeHandler({ theme });
 
   return (

@@ -1,4 +1,4 @@
-export const headerMenu = ["Demos", "About", "Blog", "Pages", "Contact"];
+export const headerMenu = ["Home", "About", "Blog", "Pages", "Contact"];
 
 import Logo1 from "../assets/Logo.png";
 import Logo2 from "../assets/Logo2.png";

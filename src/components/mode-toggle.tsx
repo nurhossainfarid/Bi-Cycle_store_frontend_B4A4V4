@@ -7,10 +7,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useTheme } from "@/providers/theme-provider";
+import { useTheme, Theme } from "@/providers/theme-provider";
+import { useAppDispatch } from "@/redux/hooks/hooks";
+import { setThemeColor } from "@/redux/features/theme/themeSlice";
 
 export function ModeToggle() {
   const { setTheme } = useTheme();
+  const dispatch = useAppDispatch();
+  const handleSetTheme = (theme: Theme) => {
+    setTheme(theme);
+    dispatch(setThemeColor(theme));
+  };
 
   return (
     <DropdownMenu>
@@ -22,13 +29,13 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+        <DropdownMenuItem onClick={() => handleSetTheme("light")}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        <DropdownMenuItem onClick={() => handleSetTheme("dark")}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+        <DropdownMenuItem onClick={() => handleSetTheme("system")}>
           System
         </DropdownMenuItem>
       </DropdownMenuContent>

@@ -17,7 +17,7 @@ const MainLayout = () => {
       )}
     >
       <div>
-        <Header theme={theme} />
+        <Header />
       </div>
       <Footer />
       <Outlet />
