@@ -7,7 +7,7 @@ const Footer = () => {
   const { theme } = useTheme();
   const { textColor } = themeHandler({ theme });
   return (
-    <div style={{ width: "1300px" }} className="mx-auto py-10">
+    <div className="mx-auto py-10 w-full">
       <div className="bg-gradient-to-r from-bright-royal-blue from-0% to-electric-violet to-100% py-5 px-10 flex justify-between items-center rounded-md">
         <div>
           <Title text="It will help you improve your writing" fontSize="xxl" />
