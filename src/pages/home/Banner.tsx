@@ -15,7 +15,6 @@ const Banner = () => {
         slidesPerView={1}
         loop={true}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
-        pagination={{ clickable: true }}
         className="rounded-lg shadow-lg"
       >
         {bicycles.map((bike) => (

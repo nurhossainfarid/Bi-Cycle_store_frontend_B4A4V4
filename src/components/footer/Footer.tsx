@@ -2,19 +2,63 @@ import { useTheme } from "@/providers/theme-provider";
 import { Button } from "../ui/button";
 import Title from "../ui/title";
 import { themeHandler } from "@/utils/themeHandler";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
   const { theme } = useTheme();
   const { textColor } = themeHandler({ theme });
+  const targetDate: string = "2025-02-15T23:59:59";
+  const calculateTimeLeft = () => {
+    const now = new Date().getTime();
+    const timeLeft = new Date(targetDate).getTime() - now;
+
+    if (timeLeft <= 0) {
+      return "Offer Expired!";
+    }
+
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  };
+
+  const [timeLeft, setTimeLeft] = useState<string>(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
   return (
     <div className="mx-auto py-10 w-full">
-      <div className="bg-gradient-to-r from-bright-royal-blue from-0% to-electric-violet to-100% py-5 px-10 flex justify-between items-center rounded-md">
+      <div className="bg-gradient-to-r from-bright-royal-blue from-0% to-electric-violet to-100% py-5 px-5 md:px-10 flex flex-col md:flex-row justify-between items-center gap-5 rounded-md">
         <div>
-          <Title text="It will help you improve your writing" fontSize="xxl" />
-          <Title text="& bring ideas more c learly." fontSize="xxl" />
+          <Title
+            text="🔥 BIGGEST OFFER! Up to 50% OFF"
+            fontSize="xl"
+            textAlign="left"
+          />
+          <Title
+            text="—Hurry, limited time! ⏳"
+            fontSize="xl"
+            textAlign="left"
+          />
         </div>
-        <Button variant={"secondary"} className="bg-white text-black">
-          Start 14 Days Free Trial
+        <div>
+          <Title text={timeLeft} fontSize="3xl" />
+        </div>
+        <Button
+          variant={"secondary"}
+          className="bg-white text-black hover:text-white animate-bounce"
+        >
+          Grab it now!
         </Button>
       </div>
       <div className="flex md:flex-row items-center justify-between pt-20">
