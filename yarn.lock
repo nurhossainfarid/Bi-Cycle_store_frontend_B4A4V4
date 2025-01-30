@@ -705,6 +705,14 @@
   dependencies:
     "@radix-ui/react-slot" "1.1.1"
 
+"@radix-ui/react-progress@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-progress/-/react-progress-1.1.1.tgz#af923714ba3723be9c510536749d6c530d8670e4"
+  integrity sha512-6diOawA84f/eMxFHcWut0aE1C2kyE9dOyCTQOMRR2C/qPiXz/X0SaiA/RLbapQaXUCmy0/hLMf9meSccD1N0pA==
+  dependencies:
+    "@radix-ui/react-context" "1.1.1"
+    "@radix-ui/react-primitive" "2.0.1"
+
 "@radix-ui/react-roving-focus@1.1.1":
   version "1.1.1"
   resolved "https://registry.npmjs.org/@radix-ui/react-roving-focus/-/react-roving-focus-1.1.1.tgz"
@@ -1120,7 +1128,7 @@
     "@radix-ui/react-tabs" "^1.1.2"
     "@reduxjs/toolkit" "^2.5.0"
     "@types/swiper" "^6.0.0"
-    Bi-Cycle_store_frontend_B4A4V4 "file:C:/Users/AORUS/AppData/Local/Yarn/Cache/v6/npm-i-ycle-store-frontend-4-4-4-0.0.0-d57a4432-6a03-47bd-824a-94014585a7b6-1738145975491/node_modules/Bi-Cycle_store_frontend_B4A4V4"
+    Bi-Cycle_store_frontend_B4A4V4 "file:C:/Users/AORUS/AppData/Local/Yarn/Cache/v6/npm-i-ycle-store-frontend-4-4-4-0.0.0-211f1a76-fc78-409f-abf6-bdb9d5a92d64-1738258994814/node_modules/Bi-Cycle_store_frontend_B4A4V4"
     class-variance-authority "^0.7.1"
     clsx "^2.1.1"
     date-fns "^4.1.0"
@@ -1135,6 +1143,7 @@
     react-router-dom "^7.1.1"
     redux-persist "^6.0.0"
     sonner "^1.7.2"
+    swiper "^11.2.1"
     tailwind-merge "^2.6.0"
     tailwindcss-animate "^1.0.7"
     uuid "^11.0.5"

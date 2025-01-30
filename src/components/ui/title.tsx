@@ -4,7 +4,7 @@ type TitleProps = {
   text: string | number;
   fontSize?: keyof TFontSize;
   color?: string;
-  textAlign?: string;
+  textAlign?: "left" | "right" | "center" | "justify";
   margin?: string;
 };
 
@@ -16,6 +16,7 @@ const Title = ({
 }: TitleProps) => {
   return (
     <h1
+      className={"text-lg md:text-xl"}
       style={{
         fontFamily: "Outfit",
         fontWeight: 500,

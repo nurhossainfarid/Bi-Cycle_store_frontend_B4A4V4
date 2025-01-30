@@ -7,13 +7,9 @@ import SubTitle from "../ui/subtitle";
 const CustomerReview = () => {
   return (
     <div
-      style={{
-        background:
-          "linear-gradient(180deg, #171924 0%, rgba(23, 25, 36, 0) 100%)",
-      }}
       className="py-20"
     >
-      <div style={{ width: "1300px" }} className="mx-auto">
+      <div className="mx-auto">
         <div className="flex flex-col items-center justify-center gap-5">
           <Title text="What our customers say" fontSize="2xl" />
           <Paragraph
