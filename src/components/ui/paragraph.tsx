@@ -1,12 +1,15 @@
 import { TFontSize, TFontSizeMap } from "@/types/types";
 
+type TextAlign = "left" | "center" | "right" | "justify";
+
 type ParagraphProps = {
-  text: string;
+  text: string | number;
   fontSize?: keyof TFontSize;
   width?: string;
   color?: string;
-  textAlign?: string | undefined;
+  textAlign?: TextAlign;
   margin?: string;
+  opacity?: string;
 };
 
 const Paragraph = ({
@@ -15,6 +18,7 @@ const Paragraph = ({
   color = "white",
   width,
   textAlign,
+  opacity = "0.8",
 }: ParagraphProps) => {
   return (
     <p
@@ -25,7 +29,7 @@ const Paragraph = ({
         width: width,
         textAlign: textAlign,
         color: color,
-        opacity: 0.8,
+        opacity: opacity,
       }}
     >
       {text}

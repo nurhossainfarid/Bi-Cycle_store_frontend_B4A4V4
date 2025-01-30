@@ -1,10 +1,12 @@
 import ProductCard from "@/components/products/ProductCard";
+import { Button } from "@/components/ui/button";
 import Paragraph from "@/components/ui/paragraph";
 import Title from "@/components/ui/title";
+import { bicyclesData } from "@/constants";
 
 const Products = () => {
   return (
-    <div>
+    <div className="flex flex-col items-center gap-10">
       <div className="flex flex-col items-center gap-5">
         <Title text="Featured Products" fontSize="2xl" />
         <Paragraph
@@ -13,7 +15,12 @@ const Products = () => {
           textAlign="center"
         />
       </div>
-      <ProductCard />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10">
+        {bicyclesData.map((bicycle) => (
+          <ProductCard key={bicycle.name} bicycle={bicycle} />
+        ))}
+      </div>
+      <Button className="text-white text-lg">More Products</Button>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { TFontSize, TFontSizeMap } from "@/types/types";
 
 type SubTitleProps = {
-  text: string;
+  text: string | number;
   fontSize?: keyof TFontSize;
   color?: string;
   textAlign?: string;

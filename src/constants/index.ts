@@ -18,6 +18,14 @@ export const headerMenu = [
   { label: "Contact", value: "contact" },
 ];
 
+export type TBicycleType = {
+  Mountain: "Mountain";
+  Road: "Road";
+  Hybrid: "Hybrid";
+  BMX: "BMX";
+  Electric: "Electric";
+};
+
 export type Bicycle = {
   id: number;
   name: string;
@@ -30,11 +38,68 @@ export type TBicycleData = {
   name: string;
   brand: string;
   model: string;
-  url: string;
-  price: number;
-  type: string;
   description: string;
+  type: TBicycleType[keyof TBicycleType];
+  frame: {
+    material: string;
+    size: string;
+    color: string;
+  };
+  wheel?: {
+    size?: number;
+    rim_material?: string;
+    tire_type?: string;
+  };
+  gear?: {
+    shifters?: string;
+    derailleurs?: {
+      front: string;
+      rear: string;
+    };
+    number_of_gears?: number;
+  };
+  brakes: {
+    type: string;
+    brand: string;
+  };
+  suspension: {
+    type: string;
+    front_fork: string;
+  };
+  handlebar: {
+    type: string;
+    material: string;
+    width: string;
+  };
+  saddle?: {
+    type: string;
+    brand: string;
+  };
+  pedals: {
+    type: string;
+    material: string;
+  };
+  weight: string;
+  accessories?: {
+    bell?: boolean;
+    kickstand?: boolean;
+    rear_rack?: boolean;
+    fenders?: boolean;
+    lights?: {
+      front?: boolean;
+      rear?: boolean;
+    };
+  };
+  price: number;
   quantity: number;
+  inStock: boolean;
+  image: {
+    front_view: string;
+    side_view?: string;
+    back_view?: string;
+    rear_view?: string;
+    close_up_gears?: string;
+  };
 };
 
 export const bicycles: Bicycle[] = [
@@ -64,115 +129,308 @@ export const bicycles: Bicycle[] = [
   },
 ];
 
-export const bicycleData:TBicycleData[] = [
+export const bicyclesData: TBicycleData[] = [
   {
-    name: "Volt Electric Bike",
-    brand: "GreenPower",
-    model: "E-VLT500",
-    url: cycle1,
-    price: 1599.99,
-    type: "Electric",
-    description:
-      "A premium electric bike with a long-range battery, perfect for eco-friendly commuting.",
-    quantity: 8,
-  },
-  {
-    name: "EcoRide Electric Bike",
-    brand: "EcoPower",
-    model: "E-ERX400",
-    url: cycle2,
-    price: 1299.99,
-    type: "Electric",
-    description:
-      "A lightweight electric bike for smooth urban commuting with a fast-charging battery.",
-    quantity: 15,
-  },
-  {
-    name: "Swift Ride E-Bike",
-    brand: "SwiftTech",
-    model: "E-SR350",
-    url: cycle3,
-    price: 999.99,
-    type: "Electric",
-    description:
-      "An affordable yet high-performance electric bike for everyday transportation.",
-    quantity: 20,
-  },
-  {
-    name: "FusionPro Electric Bike",
-    brand: "FusionCycles",
-    model: "E-FP600",
-    url: cycle4,
-    price: 1799.99,
-    type: "Electric",
-    description:
-      "Built for speed and endurance, this e-bike is ideal for long-distance journeys.",
+    name: "Mountain Explorer 5000",
+    brand: "TrailMaster",
+    model: "MX-5000",
+    description: "A robust mountain bike designed for off-road adventures.",
+    type: "Mountain",
+    frame: {
+      material: "Aluminum",
+      size: "M",
+      color: "Red",
+    },
+    wheel: {
+      size: 27,
+      rim_material: "Alloy",
+      tire_type: "Knobby",
+    },
+    brakes: {
+      type: "Disc",
+      brand: "Shimano",
+    },
+    suspension: {
+      type: "Full",
+      front_fork: "RockShox",
+    },
+    handlebar: {
+      type: "Flat",
+      material: "Aluminum",
+      width: "720mm",
+    },
+    pedals: {
+      type: "Clipless",
+      material: "Composite",
+    },
+    weight: "13kg",
+    price: 799.99,
     quantity: 10,
+    inStock: true,
+    image: {
+      front_view: cycle1,
+      side_view: "image1-side.jpg",
+    },
   },
   {
-    name: "City Cruiser Electric Bike",
-    brand: "UrbanRiders",
-    model: "E-CR200",
-    url: cycle5,
-    price: 899.99,
-    type: "Electric",
-    description:
-      "A stylish and comfortable electric bike designed for city commuting.",
-    quantity: 25,
-  },
-  {
-    name: "Volt Pro E-Bike",
-    brand: "GreenPower",
-    model: "E-VLT700",
-    url: cycle6,
-    price: 1999.99,
-    type: "Electric",
-    description:
-      "A high-end electric bike with advanced features and an enhanced battery system.",
-    quantity: 12,
-  },
-  {
-    name: "RideMax E-Bike",
-    brand: "MaxCycles",
-    model: "E-RMX500",
-    url: cycle7,
+    name: "Speedster Road Pro",
+    brand: "SpeedCycle",
+    model: "S-200",
+    description: "A high-performance road bike for speed enthusiasts.",
+    type: "Road",
+    frame: {
+      material: "Carbon",
+      size: "L",
+      color: "Blue",
+    },
+    wheel: {
+      size: 28,
+      rim_material: "Carbon",
+      tire_type: "Road",
+    },
+    brakes: {
+      type: "Caliper",
+      brand: "Campagnolo",
+    },
+    suspension: {
+      type: "None",
+      front_fork: "Carbon Fork",
+    },
+    handlebar: {
+      type: "Drop",
+      material: "Carbon",
+      width: "400mm",
+    },
+    pedals: {
+      type: "Clipless",
+      material: "Carbon",
+    },
+    weight: "7.8kg",
     price: 1499.99,
-    type: "Electric",
-    description:
-      "A versatile electric bike with a powerful motor, perfect for both city and off-road adventures.",
-    quantity: 18,
+    quantity: 20,
+    inStock: true,
+    image: {
+      front_view: cycle2,
+      side_view: "image2-side.jpg",
+    },
   },
   {
-    name: "UrbanGlide E-Bike",
-    brand: "GlideTech",
-    model: "E-UGT800",
-    url: cycle8,
-    price: 2199.99,
-    type: "Electric",
-    description:
-      "A premium electric bike with a sleek design and long-lasting battery life for urban explorers.",
+    name: "Mountain Bike X1",
+    brand: "Trek",
+    model: "Marlin 7",
+    description: "A great entry-level mountain bike for exploring trails.",
+    type: "Mountain",
+    frame: {
+      material: "Aluminum",
+      size: '17.5"',
+      color: "Black",
+    },
+    wheel: {
+      size: 29,
+      rim_material: "Aluminum",
+      tire_type: "Knobby",
+    },
+    gear: {
+      shifters: "Shimano Altus",
+      derailleurs: {
+        front: "Shimano Tourney",
+        rear: "Shimano Altus",
+      },
+      number_of_gears: 21,
+    },
+    brakes: {
+      type: "Hydraulic Disc",
+      brand: "Tektro",
+    },
+    suspension: {
+      type: "Front",
+      front_fork: "SR Suntour XCT",
+    },
+    handlebar: {
+      type: "Riser",
+      material: "Aluminum",
+      width: "720mm",
+    },
+    saddle: {
+      type: "Sport",
+      brand: "Bontrager",
+    },
+    pedals: {
+      type: "Platform",
+      material: "Plastic",
+    },
+    weight: "14 kg",
+    accessories: {
+      kickstand: true,
+    },
+    price: 600,
+    quantity: 0,
+    inStock: false,
+    image: {
+      front_view: cycle3,
+      side_view: "/images/trek_marlin7_side.jpg",
+      back_view: "/images/trek_marlin7_back.jpg",
+    },
+  },
+  {
+    name: "Road Bike Aero",
+    brand: "Giant",
+    model: "Contend AR 4",
+    description: "Fast and comfortable road bike for long rides.",
+    type: "Road",
+    frame: {
+      material: "Aluminum",
+      size: "54cm",
+      color: "Blue",
+    },
+    wheel: {
+      size: 700,
+      rim_material: "Aluminum",
+      tire_type: "Road",
+    },
+    gear: {
+      shifters: "Shimano Claris",
+      derailleurs: {
+        front: "Shimano Claris",
+        rear: "Shimano Claris",
+      },
+      number_of_gears: 16,
+    },
+    brakes: {
+      type: "Rim",
+      brand: "Tektro",
+    },
+    suspension: {
+      type: "None",
+      front_fork: "N/A",
+    },
+    handlebar: {
+      type: "Drop",
+      material: "Aluminum",
+      width: "42cm",
+    },
+    saddle: {
+      type: "Racing",
+      brand: "Giant",
+    },
+    pedals: {
+      type: "Clipless",
+      material: "Aluminum",
+    },
+    weight: "9.5 kg",
+    accessories: {
+      lights: {
+        front: true,
+        rear: true,
+      },
+    },
+    price: 850,
+    quantity: 10,
+    inStock: true,
+    image: {
+      front_view: cycle4,
+    },
+  },
+  {
+    name: "Hybrid Bike City",
+    brand: "Cannondale",
+    model: "Quick 5",
+    description: "Perfect for commuting and city riding.",
+    type: "Hybrid",
+    frame: {
+      material: "Aluminum",
+      size: "Medium",
+      color: "Grey",
+    },
+    wheel: {
+      size: 700,
+      rim_material: "Aluminum",
+      tire_type: "Hybrid",
+    },
+    gear: {
+      shifters: "Shimano Tourney",
+      derailleurs: {
+        front: "Shimano Tourney",
+        rear: "Shimano Tourney",
+      },
+      number_of_gears: 7,
+    },
+    brakes: {
+      type: "V-Brake",
+      brand: "Promax",
+    },
+    suspension: {
+      type: "None",
+      front_fork: "N/A",
+    },
+    handlebar: {
+      type: "Flat",
+      material: "Aluminum",
+      width: "680mm",
+    },
+    saddle: {
+      type: "Comfort",
+      brand: "Cannondale",
+    },
+    pedals: {
+      type: "Platform",
+      material: "Plastic",
+    },
+    weight: "12 kg",
+    accessories: {
+      rear_rack: true,
+      fenders: true,
+    },
+    price: 500,
+    quantity: 50,
+    inStock: false,
+    image: {
+      front_view: cycle5,
+      side_view: "/images/cannondale_quick5_side.jpg",
+    },
+  },
+  {
+    name: "BMX Bike Freestyle",
+    brand: "Cult",
+    model: "Gateway",
+    description: "Ideal for tricks and skatepark riding.",
+    type: "BMX",
+    frame: {
+      material: "Chromoly",
+      size: '20.5"',
+      color: "Red",
+    },
+    wheel: {
+      size: 20,
+      rim_material: "Aluminum",
+      tire_type: "BMX",
+    },
+    gear: {
+      number_of_gears: 1,
+    },
+    brakes: {
+      type: "U-Brake",
+      brand: "Cult",
+    },
+    suspension: {
+      type: "None",
+      front_fork: "N/A",
+    },
+    handlebar: {
+      type: "BMX",
+      material: "Chromoly",
+      width: '8.75"',
+    },
+    pedals: {
+      type: "Platform",
+      material: "Plastic",
+    },
+    weight: "11 kg",
+    price: 400,
     quantity: 5,
-  },
-  {
-    name: "TrailBlazer Electric Bike",
-    brand: "OffRoadX",
-    model: "E-TB650",
-    url: cycle1,
-    price: 1699.99,
-    type: "Electric",
-    description:
-      "An off-road electric bike built for rugged terrains and extreme outdoor adventures.",
-    quantity: 6,
-  },
-  {
-    name: "Velocity Pro E-Bike",
-    brand: "VelocityCycles",
-    model: "E-VP600",
-    url: cycle2,
-    price: 1599.99,
-    type: "Electric",
-    description:
-      "A high-performance electric bike designed for fast and efficient commuting over long distances.",
-    quantity: 8,
+    inStock: true,
+    image: {
+      front_view: cycle6,
+    },
   },
 ];
