@@ -13,6 +13,9 @@ import Component from "../images/component.jpeg";
 import Bag from "../images/bag.jpg";
 import Shoes from "../images/shoes.jpg";
 import Kit from "../images/kit.jpg";
+import Repair from "../images/cycle-repair.jpg";
+import Fitting from "../images/cycle-fitting.jpg";
+import Rental from "../images/cycle-rental.jpg";
 
 export const headerMenu = [
   { label: "Home", value: "" },
@@ -536,5 +539,26 @@ export const bicycleAccessory = [
     id: 6,
     image: Kit,
     name: "Custom Cycling Kit",
+  },
+];
+
+export const OurServices = [
+  {
+    image: Repair,
+    title: "Bicycle Repair",
+    description:
+      "We offer comprehensive repairs and maintenance services to ensure your bicycle is in top condition. Repair services include flat tire repair, brake adjustments, and gear tuning.",
+  },
+  {
+    image: Fitting,
+    title: "Bicycle Fitting",
+    description:
+      "Our professional bike fitting service ensures your bike is set up to fit you perfectly. For more information please visit our bike fitting page.",
+  },
+  {
+    image: Rental,
+    title: "Bicycle Rental",
+    description:
+      "Rent a bike for a day, a weekend, or a week to explore the city or hit the trails.",
   },
 ];

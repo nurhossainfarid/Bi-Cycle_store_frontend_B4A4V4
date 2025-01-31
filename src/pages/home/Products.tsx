@@ -6,7 +6,7 @@ const Products = () => {
   return (
     <div className="flex flex-col items-center gap-10">
       <div className="flex flex-col items-center gap-2 md:gap-5">
-        <h1 className="font-outfit text-xl md:text-2xl lg:text-4.5xl">
+        <h1 className="font-outfit text-xl md:text-2xl lg:text-4.5xl uppercase font-semibold">
           Featured Products
         </h1>
         <p className="text-center text-xs md:text-base opacity-80 w-full md:w-2/3">
@@ -20,7 +20,9 @@ const Products = () => {
           <ProductCard key={bicycle.name} bicycle={bicycle} />
         ))}
       </div>
-      <Button className="text-white text-lg">More Products</Button>
+      <Button variant={"outline"} className="text-white text-lg">
+        More Products
+      </Button>
     </div>
   );
 };

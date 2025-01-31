@@ -5,20 +5,19 @@ const UpcomingShopCategory = () => {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col items-center gap-2">
-        <p className="font-inter animate-pulse opacity-80">UPCOMING</p>
-        <h1 className="font-outfit text-xl md:text-2xl lg:text-4.5xl font-semibold">
-          Shop by Category
+        <h1 className="font-outfit text-xl md:text-2xl lg:text-4.5xl font-semibold uppercase">
+          Shops by Category
         </h1>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {bicycleAccessory.map((item) => (
-          <div className="relative h-80">
+          <div className="relative h-60 md:h-96 hover:scale-105 transition-transform duration-500">
             <img src={item.image} alt="Apparel" className="w-full h-[100%]" />
-            <div className="flex flex-col items-center justify-center md:justify-end gap-5 absolute bottom-0 w-full hover:bg-black/20 py-5">
+            <div className="flex flex-col items-center justify-center md:justify-end gap-5 absolute bottom-0 w-full hover:bg-black/20 opacity-0 hover:opacity-100 py-5 h-full">
               <h1 className="text-base md:text-lg lg:text-3xl font-bold text-center md:text-right font-outfit">
                 {item.name}
               </h1>
-              <Button className="text-white text-sm rounded-sm">
+              <Button className="text-white text-sm rounded-sm hover:scale-105 transition-transform duration-500">
                 SHOP NOW
               </Button>
             </div>
