@@ -4,7 +4,7 @@ import Title from "@/components/ui/title";
 import { Progress } from "@/components/ui/progress";
 const BestTrailBike = () => {
   return (
-    <div className="flex flex-col md:flex-row items-start justify-between gap-20">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-20">
       <div>
         <img src={Image} alt="" />
       </div>
