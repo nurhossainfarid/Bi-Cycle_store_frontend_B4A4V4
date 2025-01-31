@@ -1,6 +1,4 @@
-import Paragraph from "@/components/ui/paragraph";
 import Image from "../../images/bicycle1.webp";
-import Title from "@/components/ui/title";
 import { Progress } from "@/components/ui/progress";
 const BestTrailBike = () => {
   return (

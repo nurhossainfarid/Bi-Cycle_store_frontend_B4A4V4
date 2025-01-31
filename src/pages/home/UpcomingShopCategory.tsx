@@ -1,8 +1,3 @@
-import Paragraph from "@/components/ui/paragraph";
-import Apparel1 from "../../images/apparel.jpg";
-import Apparel2 from "../../images/apparel.jpg";
-import Apparel3 from "../../images/apparel.jpg";
-import Apparel4 from "../../images/apparel.jpg";
 import { Button } from "@/components/ui/button";
 import { bicycleAccessory } from "@/constants";
 

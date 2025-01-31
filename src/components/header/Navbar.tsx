@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { headerMenu } from "@/constants";
 import { ModeToggle } from "../mode-toggle";
-import SubTitle from "../ui/subtitle";
 import { Button } from "../ui/button";
 import { themeHandler } from "@/utils/themeHandler";
 import { cn } from "@/lib/utils";

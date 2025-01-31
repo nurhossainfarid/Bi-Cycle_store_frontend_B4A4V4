@@ -1,6 +1,5 @@
 import ProductCard from "@/components/products/ProductCard";
 import { Button } from "@/components/ui/button";
-import Paragraph from "@/components/ui/paragraph";
 import { bicyclesData } from "@/constants";
 
 const Products = () => {

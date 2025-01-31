@@ -7,22 +7,12 @@ import cycle3 from "../images/bg-cycle4.jpg";
 import cycle4 from "../images/bg-cycle5.jpg";
 import cycle5 from "../images/bg-cycle6.jpg";
 import cycle6 from "../images/bg-cycle7.jpg";
-import Apparel1 from "../images/apparel.jpg";
-import Apparel2 from "../images/apparel3.jpg";
-import Apparel3 from "../images/apparel4.jpeg";
-import Apparel4 from "../images/apparel5.jpeg";
-import Accessories1 from "../images/accesories1.jpg";
-import Accessories2 from "../images/accesories2.jpg";
-import Accessories3 from "../images/accesories3.jpg";
-import Component1 from "../images/component1.jpg";
-import Component2 from "../images/component2.jpg";
-import Bag1 from "../images/bag1.jpg";
-import Bag2 from "../images/bag2.jpg";
-import Bag3 from "../images/bag3.jpg";
-import Shoes1 from "../images/shoes1.jpg";
-import Shoes2 from "../images/shoes2.jpg";
-import Kit1 from "../images/kit1.jpg";
-import Kit2 from "../images/kit2.jpg";
+import Apparel from "../images/apparel5.jpeg";
+import Accessories from "../images/Accesories4.jpeg";
+import Component from "../images/component2.jpeg";
+import Bag from "../images/bag2.jpg";
+import Shoes from "../images/shoes1.jpg";
+import Kit from "../images/kit2.jpg";
 import CycleFitting from "../images/cycle-fitting.jpg";
 import CycleRepair from "../images/cycle-repair.jpg";
 import CycleRental from "../images/cycle-rental.jpg";
@@ -522,32 +512,32 @@ export const bicyclesData: TBicycleData[] = [
 export const bicycleAccessory = [
   {
     id: 1,
-    image: Apparel3,
+    image: Apparel,
     name: "Apparel",
   },
   {
     id: 2,
-    image: Accessories1,
+    image: Accessories,
     name: "Accesories",
   },
   {
     id: 3,
-    image: Component1,
-    name: "Apparel",
+    image: Component,
+    name: "Component",
   },
   {
     id: 4,
-    image: Bag1,
+    image: Bag,
     name: "Bicycle Bag",
   },
   {
     id: 5,
-    image: Shoes1,
+    image: Shoes,
     name: "Shoes",
   },
   {
     id: 6,
-    image: Kit1,
+    image: Kit,
     name: "Custom Cycling Kit",
   },
 ];
