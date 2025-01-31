@@ -22,7 +22,7 @@ const Footer = () => {
 
   return (
     <div className="mx-auto w-full">
-      <div className="bg-gradient-to-r from-bright-royal-blue from-0% to-electric-violet to-100% py-5 px-5 md:px-10 flex flex-col md:flex-row justify-between items-center gap-5 rounded-md">
+      {/* <div className="bg-gradient-to-r from-bright-royal-blue from-0% to-electric-violet to-100% py-5 px-5 md:px-10 flex flex-col md:flex-row justify-between items-center gap-5 rounded-md">
         <div className="flex gap-5 items-center">
           <img src={Img1} alt="" className="w-20" />
           <div>
@@ -47,7 +47,7 @@ const Footer = () => {
         >
           Grab it now!
         </Button>
-      </div>
+      </div> */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-10 pt-20">
         <div className="flex flex-col gap-6" style={{ width: "30%" }}>
           <Title
