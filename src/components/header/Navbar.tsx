@@ -21,7 +21,7 @@ const Navbar = () => {
       <Link to="/">
         <img
           className={cn(
-            "w-48",
+            "w-52 h-32",
             theme === "light" ? "bg-black rounded-[100%] w-20" : "bg-none -ml-6"
           )}
           src={Logo}
@@ -33,7 +33,7 @@ const Navbar = () => {
       <div className="hidden md:flex gap-6 ml-10">
         {headerMenu?.map((menu) => (
           <Link to={`/${menu.value}`} key={menu.label}>
-            <SubTitle text={menu.label} fontSize="base" color={textColor} />
+            <p className="font-inter">{menu.label}</p>
           </Link>
         ))}
       </div>
@@ -61,10 +61,13 @@ const Navbar = () => {
 
       {/* Right Section */}
       <div className="ml-auto hidden md:flex gap-6 items-center">
-        <Button variant="outline" className={cn(`text-${textColor}`)}>
+        <Button
+          variant="outline"
+          className={cn(`text-${textColor} font-outfit`)}
+        >
           <Link to="/login">Login</Link>
         </Button>
-        <Button className="text-white">
+        <Button className={cn(`text-${textColor} font-outfit`)}>
           <Link to="/register">Register</Link>
         </Button>
         <ModeToggle />

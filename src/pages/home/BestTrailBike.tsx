@@ -4,43 +4,61 @@ import Title from "@/components/ui/title";
 import { Progress } from "@/components/ui/progress";
 const BestTrailBike = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between gap-20">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-5 md:gap-20">
       <div>
         <img src={Image} alt="" />
       </div>
-      <div className="w-2/3">
-        <Paragraph text="BEST TRAIL BIKE" fontSize="sm" />
-        <Title
-          text="TRAIL VIGILLON ALLEZ TX-86 MOUNTAIN BIKE"
-          fontSize="4xl"
-          textAlign="left"
-        />
-        <div className="flex flex-col gap-10 py-10">
+      <div className="md:w-2/3">
+        <p className="font-inter text-xs md:text-sm opacity-80">
+          BEST TRAIL BIKE
+        </p>
+        <h1 className="font-outfit text-xl md:text-2xl lg:text-5xl font-semibold">
+          TRAIL VIGILLON ALLEZ TX-86 MOUNTAIN BIKE
+        </h1>
+        <div className="flex flex-col gap-5 md:gap-10 py-6 md:py-10">
           <div className="flex flex-col gap-3">
-            <Title text="Tuneups & Builds" fontSize="lg" textAlign="left" />
+            <h1 className="font-outfit text-base md:text-lg lg:text-xl font-semibold opacity-90">
+              Tuneups & Builds
+            </h1>
             <Progress value={80} className="w-[90%] h-1" />
           </div>
           <div className="flex flex-col gap-3">
-            <Title text="Adjust & Install" fontSize="lg" textAlign="left" />
+            <h1 className="font-outfit text-base md:text-lg lg:text-xl font-semibold opacity-90">
+              Adjust & Install
+            </h1>
             <Progress value={96} className="w-[90%] h-1" />
           </div>
           <div className="flex flex-col gap-3">
-            <Title text="Personal Bike Fit" fontSize="lg" textAlign="left" />
+            <h1 className="font-outfit text-base md:text-lg lg:text-xl font-semibold opacity-90">
+              Personal Bike Fit
+            </h1>
             <Progress value={90} className="w-[90%] h-1" />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row gap-10">
+        <div className="flex flex-col md:flex-row gap-5 md:gap-10">
           <div className="flex flex-col gap-2">
-            <Title text="Shifters" fontSize="xl" textAlign="left" />
-            <Paragraph text="TRX S6000 10 Speed" />
+            <h1 className="font-outfit text-base md:text-lg lg:text-2xl font-semibold">
+              Shifters
+            </h1>
+            <p className="font-inter text-xs md:text-base opacity-90">
+              TRX S6000 10 Speed
+            </p>
           </div>
           <div className="flex flex-col gap-2">
-            <Title text="F/R Brakes" fontSize="xl" textAlign="left" />
-            <Paragraph text="MTR200 Hydraulic Brake" />
+            <h1 className="font-outfit text-base md:text-lg lg:text-2xl font-semibold">
+              F/R Brakes
+            </h1>
+            <p className="font-inter text-xs md:text-base opacity-90">
+              MTR200 Hydraulic Brake
+            </p>
           </div>
           <div className="flex flex-col gap-2">
-            <Title text="Rear Shock" fontSize="xl" textAlign="left" />
-            <Paragraph text="Raiden TR Air, 184 x 44mm" />
+            <h1 className="font-outfit text-base md:text-lg lg:text-2xl font-semibold">
+              Rear Shock
+            </h1>
+            <p className="font-inter text-xs md:text-base opacity-90">
+              Raiden TR Air, 184 x 44mm
+            </p>
           </div>
         </div>
       </div>

@@ -26,16 +26,10 @@ const Banner = () => {
               style={{ height: "450px" }}
             />
             <div className="flex flex-col items-center md:items-end justify-center md:justify-end gap-5 absolute top-10 md:top-16 lg:top-20 right-5 md:right-5 lg:right-5 w-4/5 md:w-2/3 lg:w-2/5 text-white p-4 rounded-lg">
-              <h1
-                className="text-lg md:text-2xl lg:text-5xl font-bold text-center md:text-right"
-                style={{ fontFamily: "Outfit" }}
-              >
+              <h1 className="text-lg md:text-2xl lg:text-5xl font-bold text-center md:text-right font-outfit">
                 {bike.name}
               </h1>
-              <p
-                className="text-sm md:text-base lg:text-md text-center md:text-right"
-                style={{ fontFamily: "Inter" }}
-              >
+              <p className="text-sm md:text-base text-center md:text-right font-inter opacity-80">
                 {bike.description}
               </p>
               <Button className="text-white text-sm md:text-xl p-3 md:p-5 mt-3 md:mt-10">

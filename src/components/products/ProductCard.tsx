@@ -65,8 +65,10 @@ const ProductCard: FC<ProductCardProps> = ({ bicycle }) => {
         </div>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="outline">READ MORE</Button>
-        <Button className="text-white">ADD TO CARD</Button>
+        <Button variant="outline" className="text-xs">
+          READ MORE
+        </Button>
+        <Button className="text-white text-xs">ADD TO CARD</Button>
       </CardFooter>
     </Card>
   );
