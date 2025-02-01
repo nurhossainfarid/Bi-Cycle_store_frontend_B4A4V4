@@ -1,6 +1,6 @@
 import Banner from "./Banner";
 import Products from "./Products";
-import CustomerReview from "@/components/customerReview/CustomerReview";
+import CustomerReview from "@/pages/home/CustomerReview";
 import BestTrailBike from "./BestTrailBike";
 import UpcomingShopCategory from "./UpcomingShopCategory";
 import UpcomingService from "./UpcomingService";

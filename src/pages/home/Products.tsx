@@ -1,6 +1,7 @@
 import ProductCard from "@/components/products/ProductCard";
 import { Button } from "@/components/ui/button";
 import { bicyclesData } from "@/constants";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   return (
@@ -21,7 +22,7 @@ const Products = () => {
         ))}
       </div>
       <Button variant={"outline"} className="text-white text-lg">
-        More Products
+        <Link to="/all-bicycles">More Products</Link>
       </Button>
     </div>
   );

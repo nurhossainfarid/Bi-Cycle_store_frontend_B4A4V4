@@ -45,6 +45,7 @@ export type Bicycle = {
 };
 
 export type TBicycleData = {
+  id: number;
   name: string;
   brand: string;
   model: string;
@@ -167,6 +168,7 @@ export const customerReviews = [
 
 export const bicyclesData: TBicycleData[] = [
   {
+    id: 1,
     name: "Mountain Explorer 5000",
     brand: "TrailMaster",
     model: "MX-5000",
@@ -209,6 +211,7 @@ export const bicyclesData: TBicycleData[] = [
     },
   },
   {
+    id: 2,
     name: "Speedster Road Pro",
     brand: "SpeedCycle",
     model: "S-200",
@@ -251,6 +254,7 @@ export const bicyclesData: TBicycleData[] = [
     },
   },
   {
+    id: 3,
     name: "Mountain Bike X1",
     brand: "Trek",
     model: "Marlin 7",
@@ -309,6 +313,7 @@ export const bicyclesData: TBicycleData[] = [
     },
   },
   {
+    id: 4,
     name: "Road Bike Aero",
     brand: "Giant",
     model: "Contend AR 4",
@@ -368,6 +373,7 @@ export const bicyclesData: TBicycleData[] = [
     },
   },
   {
+    id: 5,
     name: "Hybrid Bike City",
     brand: "Cannondale",
     model: "Quick 5",
@@ -426,6 +432,7 @@ export const bicyclesData: TBicycleData[] = [
     },
   },
   {
+    id: 6,
     name: "BMX Bike Freestyle",
     brand: "Cult",
     model: "Gateway",

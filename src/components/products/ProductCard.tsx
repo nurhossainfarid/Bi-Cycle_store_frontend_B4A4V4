@@ -11,13 +11,25 @@ import Paragraph from "../ui/paragraph";
 import { TBicycleData } from "@/constants";
 
 import { FC } from "react";
+import { Link } from "react-router-dom";
+import { ShoppingCart } from "lucide-react";
 
 interface ProductCardProps {
   bicycle: TBicycleData;
 }
 
 const ProductCard: FC<ProductCardProps> = ({ bicycle }) => {
-  const { name, model, brand, frame, quantity, type, image } = bicycle;
+  const {
+    id: cycleId,
+    name,
+    model,
+    brand,
+    frame,
+    quantity,
+    type,
+    image,
+  } = bicycle;
+
   return (
     <Card className="hover:border-2 hover:border-white hover:scale-105 transition-transform duration-300">
       <div className="p-0">
@@ -65,10 +77,12 @@ const ProductCard: FC<ProductCardProps> = ({ bicycle }) => {
         </div>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="outline" className="text-xs">
-          READ MORE
+        <Button variant="outline" className="text-sm">
+          <Link to={`/bicycle-details/${cycleId}`}>READ MORE</Link>
         </Button>
-        <Button className="text-white text-xs">ADD TO CARD</Button>
+        <Button className="text-white font-outfit">
+          <ShoppingCart /> ADD TO CART
+        </Button>
       </CardFooter>
     </Card>
   );
