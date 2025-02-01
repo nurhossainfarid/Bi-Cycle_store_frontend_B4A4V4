@@ -42,8 +42,11 @@ const UpcomingService = () => {
           </Card>
         ))}
       </div>
-      <Button variant={"outline"} className="text-white text-lg">
-        More Products
+      <Button
+        variant="outline"
+        className="border-gray-400 text-gray-300 hover:text-white text-lg transition-transform duration-500 hover:scale-105"
+      >
+        More Services
       </Button>
     </div>
   );

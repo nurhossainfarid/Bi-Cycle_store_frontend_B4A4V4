@@ -1,50 +1,85 @@
 import { customerReviews } from "@/constants";
-import Paragraph from "../ui/paragraph";
-import Title from "../ui/title";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import SubTitle from "../ui/subtitle";
+import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
 
 const CustomerReview = () => {
   return (
-    <div
-      className="py-20"
-    >
-      <div className="mx-auto">
-        <div className="flex flex-col items-center justify-center gap-5">
-          <Title text="What our customers say" fontSize="2xl" />
-          <Paragraph
-            text="Read why thousands of marketers, writers, and entrepreneurs love us so much."
-            width="30%"
-            textAlign="center"
-          />
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-20">
-          {customerReviews.map((review) => (
-            <div
-              className="bg-white p-5 rounded-md flex flex-col gap-5 h-cover"
-              key={review.id}
-            >
-              <div className="flex items-center justify-start gap-5">
-                <Avatar>
-                  <AvatarImage
-                    src="https://github.com/shadcn.png"
-                    alt="@shadcn"
-                  />
-                </Avatar>
-                <div className="flex flex-col gap-1">
-                  <Title text={review.name} fontSize="base" color="#12141D" />
-                  <SubTitle text={review.email} fontSize="xs" color="#12141D" />
-                </div>
-              </div>
-              <div>
-                <Paragraph text={review.comment} color="#12141D" />
-                <a className="text-blue-400">{review.about}</a>
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className=" flex flex-col gap-10 items-center">
+      {/* Title Section */}
+      <div className="text-center">
+        <h2 className="font-outfit text-xl md:text-2xl lg:text-4.5xl font-semibold uppercase">
+          What Our Customers Say
+        </h2>
+        <p className="text-gray-400 w-sm text-center mt-5">
+          Read why thousands of marketers, writers, and entrepreneurs love us so
+          much.
+        </p>
       </div>
-      <hr />
+      {/* Carousel Section */}
+      <div className="max-w-7xl mx-auto">
+        <Carousel opts={{ loop: true }} className="w-full">
+          <CarouselContent className="-ml-1">
+            {customerReviews.map((review, index) => (
+              <CarouselItem
+                key={index}
+                className="pl-1 md:basis-1/2 lg:basis-1/3"
+              >
+                <div className="p-3">
+                  <Card className="bg-gray-800 rounded-lg shadow-lg">
+                    <CardContent className="flex flex-col gap-5 p-6">
+                      {/* Customer Info */}
+                      <div className="flex items-center gap-4">
+                        <Avatar>
+                          <AvatarImage
+                            src={
+                              review.avatar || "https://github.com/shadcn.png"
+                            }
+                            alt={review.name}
+                          />
+                        </Avatar>
+                        <div>
+                          <h3 className="text-lg font-semibold">
+                            {review.name}
+                          </h3>
+                          <p className="text-sm text-gray-400">
+                            {review.email}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Review Content */}
+                      <p className="text-gray-300">{review.comment}</p>
+
+                      {/* Read More Button */}
+                      <Button variant="outline" className="w-full">
+                        Read More
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+
+          {/* Navigation Buttons */}
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
+      <Button
+        variant="outline"
+        className="border-gray-400 text-gray-300 hover:text-white md:text-lg transition-transform duration-500 hover:scale-105"
+      >
+        More Review
+      </Button>
     </div>
   );
 };

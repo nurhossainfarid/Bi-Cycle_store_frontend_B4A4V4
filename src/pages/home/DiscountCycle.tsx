@@ -21,6 +21,9 @@ const DiscountCycle = () => {
   const timeLeft = useOfferedTimeLeft("2025-02-15T23:59:59");
   return (
     <div className="flex flex-col w-full relative" style={{ width: "100%" }}>
+      <h2 className="font-outfit text-xl md:text-2xl lg:text-4.5xl font-semibold uppercase mb-10 text-center">
+        Biggest Offer
+      </h2>
       <div className="flex flex-col md:flex-row justify-between gap-5 w-full bg-black/30">
         <div
           className="bg-white md:p-10 md:absolute right-24 top-0 h-full flex flex-col items-start justify-around gap-10"

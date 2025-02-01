@@ -16,6 +16,9 @@ import Kit from "../images/kit.jpg";
 import Repair from "../images/cycle-repair.jpg";
 import Fitting from "../images/cycle-fitting.jpg";
 import Rental from "../images/cycle-rental.jpg";
+import News1 from "../images/latest_new1.webp";
+import News2 from "../images/latest_new2.webp";
+import News3 from "../images/latest_new3.webp";
 
 export const headerMenu = [
   { label: "Home", value: "" },
@@ -138,68 +141,27 @@ export const bicycles: Bicycle[] = [
 
 export const customerReviews = [
   {
-    id: "c1",
-    name: "Darrell Steward",
-    email: "@darrels",
+    id: 1,
+    name: "Alice Johnson",
+    email: "alice@example.com",
+    avatar: "https://randomuser.me/api/portraits/women/1.jpg",
     comment:
-      "You made it so simple. My new site is so much faster and easier to work with than my old site. I just choose the page, make the change and click save",
-    about: "#another",
+      "This platform transformed the way I do business. Highly recommended!",
   },
   {
-    id: "c2",
-    name: "Leslie Alexander",
-    email: "@lesslie",
-    comment:
-      "Simply the best. Better than all the rest. I’d recommend this product to beginners and advanced users.",
-    about: "#postcrafts",
+    id: 2,
+    name: "Mark Smith",
+    email: "mark@example.com",
+    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    comment: "Great customer support and amazing features. Absolutely love it!",
   },
   {
-    id: "c3",
-    name: "Jenny Wilson",
-    email: "@jennywilson",
+    id: 3,
+    name: "Sophia Lee",
+    email: "sophia@example.com",
+    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
     comment:
-      "This is a top quality product. No need to think twice before making it live on web.",
-    about: "#make_it_fast",
-  },
-  {
-    id: "c4",
-    name: "Kristin Watson",
-    email: "@darrels",
-    comment:
-      "Finally, I’ve found a template that covers all bases for a bootstrapped startup. We were able to launch in days, not months.",
-    about: "#postcrafts",
-  },
-  {
-    id: "c5",
-    name: "Guy Hawkins",
-    email: "@jennywilson",
-    comment:
-      "This is a top quality product. No need to think twice before making it live on web.",
-    about: "#make_it_fast",
-  },
-  {
-    id: "c6",
-    name: "Marvin McKinney",
-    email: "@jennywilson",
-    comment:
-      "With Postcrafts, it’s quicker with the customer, the customer is more ensured of getting exactly what they ordered, and I’m all for the efficiency.",
-    about: "#dev #tools",
-  },
-  {
-    id: "c7",
-    name: "Annette Black",
-    email: "@jennywilson",
-    comment:
-      "You made it so simple. My new site is so much faster and easier to work with than my old site. I just choose the page, make the change and click save.",
-    about: "#another",
-  },
-  {
-    id: "c8",
-    name: "Floyd Miles",
-    email: "@jennywilson",
-    comment:
-      "My new site is so much faster and easier to work with than my old site. I just choose the page, make the change and click save.",
-    about: "#postcrafts",
+      "An outstanding experience! The UI is smooth and the support team is fantastic.",
   },
 ];
 
@@ -560,5 +522,32 @@ export const OurServices = [
     title: "Bicycle Rental",
     description:
       "Rent a bike for a day, a weekend, or a week to explore the city or hit the trails.",
+  },
+];
+
+export const NewsData = [
+  {
+    id: "n1",
+    title: "Ninja Mountain Bike Performance",
+    time: "February 01, 2024",
+    description:
+      "Ninja Mountain Bike Performance is a mountain bike skills clinic designed to help you improve your riding skills. For more information, visit the Ninja Mountain Bike Performance website.",
+    image: News1,
+  },
+  {
+    id: "n2",
+    title: "The Best Convertible Gear On The Market",
+    time: "January 08, 2025",
+    description:
+      "The best convertible gear on the market. The new convertible gear on the market...",
+    image: News2,
+  },
+  {
+    id: "n3",
+    title: "Harness The Power Of Your Hormones",
+    time: "January 25, 2025",
+    description:
+      "Harness the power of your hormones. The new hormone harness is designed to help you get the most out of ...",
+    image: News3,
   },
 ];

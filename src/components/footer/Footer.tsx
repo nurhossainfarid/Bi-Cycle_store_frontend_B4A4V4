@@ -18,11 +18,11 @@ import { useOfferedTimeLeft } from "@/utils/offeredTimeLeft";
 const Footer = () => {
   const { theme } = useTheme();
   const { textColor } = themeHandler({ theme });
-  const timeLeft = useOfferedTimeLeft("2025-02-15T23:59:59");
+  const timeLeft = useOfferedTimeLeft("2025-02-20T23:59:59");
 
   return (
-    <div className="mx-auto w-full">
-      {/* <div className="bg-gradient-to-r from-bright-royal-blue from-0% to-electric-violet to-100% py-5 px-5 md:px-10 flex flex-col md:flex-row justify-between items-center gap-5 rounded-md">
+    <div className="mx-auto w-full mt-5 md:10 lg:mt-20">
+      <div className="bg-gradient-to-r from-bright-royal-blue from-0% to-electric-violet to-100% py-5 px-5 md:px-10 flex flex-col md:flex-row justify-between items-center gap-5 rounded-md">
         <div className="flex gap-5 items-center">
           <img src={Img1} alt="" className="w-20" />
           <div>
@@ -47,8 +47,8 @@ const Footer = () => {
         >
           Grab it now!
         </Button>
-      </div> */}
-      <div className="flex flex-col md:flex-row justify-between items-start gap-10 pt-20">
+      </div>
+      <div className="flex flex-col md:flex-row justify-between items-start gap-10 pt-10">
         <div className="flex flex-col gap-6" style={{ width: "30%" }}>
           <Title
             text="TRAIL"
