@@ -19,6 +19,7 @@ import Rental from "../images/cycle-rental.jpg";
 import News1 from "../images/latest_new1.webp";
 import News2 from "../images/latest_new2.webp";
 import News3 from "../images/latest_new3.webp";
+import { Bicycle, TBicycleData } from "@/types/bicycle.type";
 
 export const headerMenu = [
   { label: "Home", value: "" },
@@ -27,91 +28,6 @@ export const headerMenu = [
   { label: "Dashboard", value: "dashboard" },
   { label: "Contact", value: "contact" },
 ];
-
-export type TBicycleType = {
-  Mountain: "Mountain";
-  Road: "Road";
-  Hybrid: "Hybrid";
-  BMX: "BMX";
-  Electric: "Electric";
-};
-
-export type Bicycle = {
-  id: number;
-  name: string;
-  description: string;
-  brand: string;
-  image: string;
-};
-
-export type TBicycleData = {
-  id: number;
-  name: string;
-  brand: string;
-  model: string;
-  description: string;
-  type: TBicycleType[keyof TBicycleType];
-  frame: {
-    material: string;
-    size: string;
-    color: string;
-  };
-  wheel?: {
-    size?: number;
-    rim_material?: string;
-    tire_type?: string;
-  };
-  gear?: {
-    shifters?: string;
-    derailleurs?: {
-      front: string;
-      rear: string;
-    };
-    number_of_gears?: number;
-  };
-  brakes: {
-    type: string;
-    brand: string;
-  };
-  suspension: {
-    type: string;
-    front_fork: string;
-  };
-  handlebar: {
-    type: string;
-    material: string;
-    width: string;
-  };
-  saddle?: {
-    type: string;
-    brand: string;
-  };
-  pedals: {
-    type: string;
-    material: string;
-  };
-  weight: string;
-  accessories?: {
-    bell?: boolean;
-    kickstand?: boolean;
-    rear_rack?: boolean;
-    fenders?: boolean;
-    lights?: {
-      front?: boolean;
-      rear?: boolean;
-    };
-  };
-  price: number;
-  quantity: number;
-  inStock: boolean;
-  image: {
-    front_view: string;
-    side_view?: string;
-    back_view?: string;
-    rear_view?: string;
-    close_up_gears?: string;
-  };
-};
 
 export const bicycles: Bicycle[] = [
   {

@@ -29,3 +29,5 @@ export const TFontSizeMap: TFontSize = {
   "5xl": "72px",
   "6xl": "96px",
 };
+
+
