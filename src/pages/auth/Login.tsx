@@ -3,19 +3,16 @@ import { FieldValues } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import PHForm from "@/components/form/PHForm";
 import PHInput from "@/components/form/PHInput";
-import Image1 from "../../images/login1.jpg";
-import Image2 from "../../images/login2.jpg";
-import Image3 from "../../images/login3.jpg";
-import Image4 from "../../images/login4.jpeg";
-import Image5 from "../../images/login5.jpeg";
-import Image6 from "../../images/login6.jpeg";
 import Image7 from "../../images/login7.png";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const defaultValues = {
-    userId: "A-0001",
+    email: "farid@example.com",
     password: "farid123",
   };
 
@@ -45,8 +42,32 @@ const Login = () => {
       >
         <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
           <h1 style={{ marginBottom: "10px" }}>Login</h1>
-          <PHInput type="text" name="userId" label="Email:" />
-          <PHInput type="text" name="password" label="Password" />
+          <PHInput type="text" name="email" label="Email:" />
+          <div className="relative">
+            <PHInput
+              type={showPassword ? "text" : "password"}
+              name="password"
+              label="Password:"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute inset-y-0 right-2 top-1/2 flex items-center text-gray-500"
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
+          <div className="text-center mt-4">
+            <p>
+              Don't have an account?
+              <a
+                href="/register"
+                className="text-blue-500 hover:underline ml-1"
+              >
+                Create One
+              </a>
+            </p>
+          </div>
         </PHForm>
       </div>
     </div>
