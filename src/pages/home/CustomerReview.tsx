@@ -24,8 +24,8 @@ const CustomerReview = () => {
         </p>
       </div>
       {/* Carousel Section */}
-      <div className="max-w-7xl mx-auto">
-        <Carousel opts={{ loop: true }} className="w-full">
+      <div className="">
+        <Carousel opts={{ loop: true }} className="max-w-[260px] md:max-w-7xl">
           <CarouselContent className="-ml-1">
             {customerReviews.map((review, index) => (
               <CarouselItem
@@ -34,7 +34,7 @@ const CustomerReview = () => {
               >
                 <div className="p-3">
                   <Card className="bg-gray-800 rounded-lg shadow-lg">
-                    <CardContent className="flex flex-col gap-5 p-6">
+                    <CardContent className="flex flex-col gap-3 md:gap-5 p-3 md:p-6">
                       {/* Customer Info */}
                       <div className="flex items-center gap-4">
                         <Avatar>
@@ -46,17 +46,17 @@ const CustomerReview = () => {
                           />
                         </Avatar>
                         <div>
-                          <h3 className="text-lg font-semibold">
+                          <h3 className="md:text-lg font-semibold">
                             {review.name}
                           </h3>
-                          <p className="text-sm text-gray-400">
+                          <p className="text-xs md:text-sm text-gray-400">
                             {review.email}
                           </p>
                         </div>
                       </div>
 
                       {/* Review Content */}
-                      <p className="text-gray-300">{review.comment}</p>
+                      <p className="text-gray-300 text-xs md:text-base">{review.comment}</p>
 
                       {/* Read More Button */}
                       <Button variant="outline" className="w-full">

@@ -11,6 +11,7 @@ import Logo from "../../images/cylezen-logo.png";
 
 const Navbar = () => {
   const { theme } = useTheme();
+  console.log(theme);
   const { textColor } = themeHandler({ theme });
   const [isOpen, setIsOpen] = useState(false);
 
@@ -60,12 +61,14 @@ const Navbar = () => {
 
       {/* Right Section */}
       <div className="ml-auto hidden md:flex gap-6 items-center">
-        <Button
-          variant="outline"
-          className={cn(`text-${textColor} font-outfit`)}
-        >
-          <Link to="/login">Login</Link>
-        </Button>
+        <Link to="/login">
+          <Button
+            variant="outline"
+            className={cn(`text-${textColor} font-outfit`)}
+          >
+            Login
+          </Button>
+        </Link>
         <Button className={cn(`text-${textColor} font-outfit`)}>
           <Link to="/register">Register</Link>
         </Button>
