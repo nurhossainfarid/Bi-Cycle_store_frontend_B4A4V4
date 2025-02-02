@@ -4,20 +4,39 @@ import { useNavigate } from "react-router-dom";
 import PHForm from "@/components/form/PHForm";
 import PHInput from "@/components/form/PHInput";
 import Image7 from "../../images/login7.png";
-import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import { useRegisterMutation } from "@/redux/features/auth/authApi";
+import { toast } from "sonner";
 
 const Register = () => {
   const navigate = useNavigate();
 
   const defaultValues = {
-    name: "Farid",
-    email: "farid@example.com",
-    password: "farid123",
+    name: "customer",
+    email: "customer3@test.com",
+    password: "customer123456",
   };
 
+  const [register] = useRegisterMutation();
+
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
+    const toastId = toast.loading("Register in...");
+    try {
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      };
+      const res = await register(userInfo).unwrap();
+      toast.success("Register successful", { id: toastId, duration: 2000 });
+
+      if (res?.data?.needsPasswordChange) {
+        navigate("/change-password");
+      } else {
+        navigate(`/login`);
+      }
+    } catch (error) {
+      toast.error("Invalid credentials", { id: toastId, duration: 2000 });
+    }
   };
 
   return (
