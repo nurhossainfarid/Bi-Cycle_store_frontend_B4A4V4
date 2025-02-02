@@ -1,6 +1,4 @@
-import { BaseQueryApi } from '@reduxjs/toolkit/query';
-
-
+import { BaseQueryApi } from "@reduxjs/toolkit/query";
 
 export type TError = {
   data: {
@@ -30,4 +28,11 @@ export type TResponseRedux<T> = TResponse<T> & BaseQueryApi;
 export type TQueryParam = {
   name: string;
   value: boolean | React.Key;
+};
+
+export type TUserFromToken = {
+  userId: string;
+  role: string;
+  iat: number;
+  exp: number;
 };

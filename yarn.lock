@@ -544,26 +544,6 @@
   resolved "https://registry.npmjs.org/@radix-ui/react-context/-/react-context-1.1.1.tgz"
   integrity sha512-UASk9zi+crv9WteK/NU4PLvOoL3OuE6BWVKNF6hPRBtYBDXQ2u5iu3O59zUlJiTVvkyuycnqrztsHVJwcK9K+Q==
 
-"@radix-ui/react-dialog@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-dialog/-/react-dialog-1.1.4.tgz#d68e977acfcc0d044b9dab47b6dd2c179d2b3191"
-  integrity sha512-Ur7EV1IwQGCyaAuyDRiOLA5JIUZxELJljF+MbM/2NC0BYwfuRrbpS30BiQBJrVruscgUkieKkqXYDOoByaxIoA==
-  dependencies:
-    "@radix-ui/primitive" "1.1.1"
-    "@radix-ui/react-compose-refs" "1.1.1"
-    "@radix-ui/react-context" "1.1.1"
-    "@radix-ui/react-dismissable-layer" "1.1.3"
-    "@radix-ui/react-focus-guards" "1.1.1"
-    "@radix-ui/react-focus-scope" "1.1.1"
-    "@radix-ui/react-id" "1.1.0"
-    "@radix-ui/react-portal" "1.1.3"
-    "@radix-ui/react-presence" "1.1.2"
-    "@radix-ui/react-primitive" "2.0.1"
-    "@radix-ui/react-slot" "1.1.1"
-    "@radix-ui/react-use-controllable-state" "1.1.0"
-    aria-hidden "^1.1.1"
-    react-remove-scroll "^2.6.1"
-
 "@radix-ui/react-dialog@^1.1.5":
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-dialog/-/react-dialog-1.1.5.tgz#1bb2880e6b0ef9d9d0d9f440e1414c94bbacb55b"
@@ -793,16 +773,9 @@
   dependencies:
     "@radix-ui/react-primitive" "2.0.1"
 
-"@radix-ui/react-slot@1.1.1":
+"@radix-ui/react-slot@1.1.1", "@radix-ui/react-slot@^1.1.1":
   version "1.1.1"
   resolved "https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.1.1.tgz"
-  integrity sha512-RApLLOcINYJA+dMVbOju7MYv1Mb2EBp2nH4HdDzXTSyaR5optlm6Otrz1euW3HbdOR8UmmFK06TD+A9frYWv+g==
-  dependencies:
-    "@radix-ui/react-compose-refs" "1.1.1"
-
-"@radix-ui/react-slot@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-1.1.1.tgz#ab9a0ffae4027db7dc2af503c223c978706affc3"
   integrity sha512-RApLLOcINYJA+dMVbOju7MYv1Mb2EBp2nH4HdDzXTSyaR5optlm6Otrz1euW3HbdOR8UmmFK06TD+A9frYWv+g==
   dependencies:
     "@radix-ui/react-compose-refs" "1.1.1"
@@ -1182,22 +1155,24 @@
     "@hookform/resolvers" "^3.10.0"
     "@radix-ui/react-avatar" "^1.1.2"
     "@radix-ui/react-checkbox" "^1.1.3"
-    "@radix-ui/react-dialog" "^1.1.4"
+    "@radix-ui/react-dialog" "^1.1.5"
     "@radix-ui/react-dropdown-menu" "^2.1.4"
     "@radix-ui/react-label" "^2.1.1"
     "@radix-ui/react-popover" "^1.1.4"
     "@radix-ui/react-progress" "^1.1.1"
     "@radix-ui/react-select" "^2.1.5"
+    "@radix-ui/react-separator" "^1.1.1"
     "@radix-ui/react-slot" "^1.1.1"
     "@radix-ui/react-tabs" "^1.1.2"
+    "@radix-ui/react-tooltip" "^1.1.7"
     "@reduxjs/toolkit" "^2.5.0"
     "@types/swiper" "^6.0.0"
-    Bi-Cycle_store_frontend_B4A4V4 "file:C:/Users/AORUS/AppData/Local/Yarn/Cache/v6/npm-i-ycle-store-frontend-4-4-4-0.0.0-00766418-4f7c-4a56-b873-d502292b4b79-1738473645328/node_modules/Bi-Cycle_store_frontend_B4A4V4"
+    Bi-Cycle_store_frontend_B4A4V4 "file:C:/Users/AORUS/AppData/Local/Yarn/Cache/v6/npm-i-ycle-store-frontend-4-4-4-0.0.0-c4617c92-6625-48ed-bdfa-cea1487760be-1738488498595/node_modules/Bi-Cycle_store_frontend_B4A4V4"
     class-variance-authority "^0.7.1"
     clsx "^2.1.1"
     date-fns "^4.1.0"
     embla-carousel-react "^8.5.2"
-    lucide-react "^0.469.0"
+    lucide-react "^0.474.0"
     react "^18.3.1"
     react-day-picker "8.10.1"
     react-dom "^18.3.1"
@@ -1926,6 +1901,11 @@ json5@^2.2.3:
   resolved "https://registry.npmjs.org/json5/-/json5-2.2.3.tgz"
   integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
 
+jwt-decode@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-4.0.0.tgz#2270352425fd413785b2faf11f6e755c5151bd4b"
+  integrity sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA==
+
 keyv@^4.5.4:
   version "4.5.4"
   resolved "https://registry.npmjs.org/keyv/-/keyv-4.5.4.tgz"
@@ -1981,11 +1961,6 @@ lru-cache@^5.1.1:
   integrity sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==
   dependencies:
     yallist "^3.0.2"
-
-lucide-react@^0.469.0:
-  version "0.469.0"
-  resolved "https://registry.npmjs.org/lucide-react/-/lucide-react-0.469.0.tgz"
-  integrity sha512-28vvUnnKQ/dBwiCQtwJw7QauYnE7yd2Cyp4tTTJpvglX4EMpbflcdBgrgToX2j71B3YvugK/NH3BGUk+E/p/Fw==
 
 lucide-react@^0.474.0:
   version "0.474.0"

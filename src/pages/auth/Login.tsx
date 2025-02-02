@@ -6,18 +6,46 @@ import PHInput from "@/components/form/PHInput";
 import Image7 from "../../images/login7.png";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { useAppDispatch } from "@/redux/hooks/hooks";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { toast } from "sonner";
+import { setUser } from "@/redux/features/auth/authSlice";
+import { verifyToken } from "@/utils/verifyToken";
+import { TUserFromToken } from "@/types";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const [login] = useLoginMutation();
 
   const defaultValues = {
-    email: "farid@example.com",
-    password: "farid123",
+    email: "customer1@test.com",
+    password: "customer123456",
   };
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
+    const toastId = toast.loading("Logging in...");
+    try {
+      const userInfo = {
+        email: data.email,
+        password: data.password,
+      };
+      const res = await login(userInfo).unwrap();
+      const token = res.data.token;
+      const user = verifyToken(token) as TUserFromToken;
+      dispatch(setUser({ user: user, token: token }));
+      toast.success("Login successful", { id: toastId, duration: 2000 });
+
+      if (res?.data?.needsPasswordChange) {
+        navigate("/change-password");
+      } else {
+        navigate(`/`);
+      }
+    } catch (error) {
+      toast.error("Invalid credentials", { id: toastId, duration: 2000 });
+    }
   };
 
   return (

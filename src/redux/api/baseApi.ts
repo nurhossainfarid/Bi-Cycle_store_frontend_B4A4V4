@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   BaseQueryApi,
   BaseQueryFn,
@@ -11,7 +12,7 @@ import { logout, setUser } from "../features/auth/authSlice";
 import { toast } from "sonner";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api/v1",
+  baseUrl: "http://localhost:5000/api/v2",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -32,22 +33,40 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   if (result?.error?.status === 400) {
-    toast.error(result?.error?.data?.message);
+    if (
+      result?.error?.data &&
+      typeof result.error.data === "object" &&
+      "message" in result.error.data
+    ) {
+      toast.error((result.error.data as { message: string }).message);
+    }
   }
 
   if (result?.error?.status === 403) {
-    toast.error(result?.error?.data?.message);
+    if (
+      result?.error?.data &&
+      typeof result.error.data === "object" &&
+      "message" in result.error.data
+    ) {
+      toast.error((result.error.data as { message: string }).message);
+    }
   }
 
   if (result?.error?.status === 404) {
-    toast.error(result?.error?.data?.message);
+    if (
+      result?.error?.data &&
+      typeof result.error.data === "object" &&
+      "message" in result.error.data
+    ) {
+      toast.error((result.error.data as { message: string }).message);
+    }
   }
 
   if (result?.error?.status === 401) {
     //* Send Refresh
     console.log("Sending refresh token");
 
-    const res = await fetch("http://localhost:5000/api/v1/auth/refresh-token", {
+    const res = await fetch("http://localhost:5000/api/v2/auth/refresh-token", {
       method: "POST",
       credentials: "include",
     });
