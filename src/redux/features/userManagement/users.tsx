@@ -39,6 +39,19 @@ const useUserApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getUserByEmail: builder.query({
+      query: (email: string) => {
+        return {
+          url: `/users/email/${email}`,
+          method: "GET",
+        };
+      },
+      transformResponse: (response: TResponseRedux<TUser>) => {
+        return {
+          data: response.data,
+        };
+      },
+    }),
     updateUser: builder.mutation({
       query: ({ id, data }: { id: string; data: Partial<TUser> }) => ({
         url: `/users/${id}`,
@@ -59,6 +72,7 @@ const useUserApi = baseApi.injectEndpoints({
 export const {
   useGetAllUserQuery,
   useGetUserQuery,
+  useGetUserByEmailQuery,
   useUpdateUserMutation,
   useDeleteUserMutation,
 } = useUserApi;

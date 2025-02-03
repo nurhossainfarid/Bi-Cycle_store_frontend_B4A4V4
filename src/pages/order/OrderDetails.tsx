@@ -1,8 +1,16 @@
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { selectCurrentUser } from "@/redux/features/auth/authSlice";
+import {
+  selectCurrentUser,
+  useCurrentToken,
+} from "@/redux/features/auth/authSlice";
 import { useGetOrdersQuery } from "@/redux/features/order/order";
+import {
+  useGetAllUserQuery,
+  useGetUserByEmailQuery,
+} from "@/redux/features/userManagement/users";
 import { useAppSelector } from "@/redux/hooks/hooks";
+import { verifyToken } from "@/utils/verifyToken";
 export interface Transaction {
   id: string;
   transactionStatus: string | null;
@@ -32,12 +40,15 @@ export interface Order {
 }
 
 export default function OrderDetails() {
-  const user = useAppSelector(selectCurrentUser)
-  console.log(user);
+  const user = useAppSelector(selectCurrentUser);
+  const { data: userData } = useGetUserByEmailQuery(user?.email);
+
   const { isLoading, data } = useGetOrdersQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
-  const orderData: Order[] = data?.data;
+  const orderData: Order[] = data?.data.filter(
+    (order) => order.user === userData?.data?._id
+  );
 
   return isLoading ? (
     <Skeleton />
