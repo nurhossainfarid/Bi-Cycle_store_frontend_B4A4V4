@@ -15,7 +15,7 @@ export type Bicycle = {
 };
 
 export type TBicycleData = {
-  id: number;
+  _id: string;
   name: string;
   brand: string;
   model: string;

@@ -19,7 +19,7 @@ interface ProductCardProps {
 
 const ProductCard: FC<ProductCardProps> = ({ bicycle }) => {
   const {
-    id: cycleId,
+    _id: bicycleId,
     name,
     model,
     brand,
@@ -82,7 +82,7 @@ const ProductCard: FC<ProductCardProps> = ({ bicycle }) => {
       </CardContent>
       <CardFooter className="flex flex-col gap-2 md:flex-row items-start justify-between md:mt-5">
         <Button variant="outline" className="text-[8px] md:text-sm p-2">
-          <Link to={`/bicycle-details/${cycleId}`}>READ MORE</Link>
+          <Link to={`/bicycle-details/${bicycleId}`}>READ MORE</Link>
         </Button>
         <Button className="text-white font-outfit text-[8px] md:text-sm p-2">
           <ShoppingCart /> ADD TO CART

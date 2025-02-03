@@ -29,11 +29,28 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
+import { useGetBicycleQuery } from "@/redux/features/bicycleManagement/bicycle";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const BicycleDetails = () => {
-  const { cycleId } = useParams();
+  const { bicycleId } = useParams();
+
+  const { data, isLoading } = useGetBicycleQuery(bicycleId!);
+  if (isLoading) {
+    return (
+      <div className="flex items-center space-x-4">
+        <Skeleton className="h-12 w-12 rounded-full" />
+        <div className="space-y-2">
+          <Skeleton className="h-4 md:h-10 w-[250px] md:w-[500px]" />
+          <Skeleton className="h-4 md:h-10 w-[250px] md:w-[500px]" />
+        </div>
+      </div>
+    );
+  }
+  const bicycle = data?.data;
+
   const {
-    id,
+    _id,
     name,
     brand,
     model,
@@ -52,34 +69,52 @@ const BicycleDetails = () => {
     quantity,
     inStock,
     image,
-  } = bicyclesData.find(
-    (cycle) => cycle.id === Number(cycleId)
-  ) as TBicycleData;
+  } = bicycle || {}; // Provide a default empty object to avoid undefined errors
 
   return (
-    <div className="flex flex-col gap-5 md:gap-16">
+    <div className="flex flex-col gap-5 md:gap-10">
       <div className="flex flex-col md:flex-row items-start justify-between gap-5 md:gap-20">
-        <div className="flex flex-col gap-5">
-          <div className="w-2xl max-w-6xl mx-auto">
-            <Carousel opts={{ loop: true }} className="w-full">
+        <div className="flex flex-col items-center gap-5">
+          <div className="pl-6 md:pl-0">
+            <Carousel
+              opts={{ loop: true }}
+              className="max-w-[280px] md:max-w-6xl h-200px md:h-[450px]"
+            >
               <CarouselContent className="gap-2">
-                <CarouselItem key={id} className="pl-1">
-                  <img src={image.front_view} alt="" />
+                <CarouselItem key={_id} className="pl-1">
+                  <img
+                    src={image?.front_view}
+                    alt=""
+                    className="h-200px md:h-[450px] w-full"
+                  />
                 </CarouselItem>
-                <CarouselItem key={id} className="pl-1 ">
-                  <img src={image.back_view} alt="" />
+                <CarouselItem key={_id} className="pl-1">
+                  <img
+                    src={image?.back_view}
+                    alt=""
+                    className="h-200px md:h-[450px] w-full"
+                  />
                 </CarouselItem>
-                <CarouselItem key={id} className="pl-1 ">
-                  <img src={image.close_up_gears} alt="" />
+                <CarouselItem key={_id} className="pl-1 ">
+                  <img
+                    src={image?.close_up_gears}
+                    alt=""
+                    className="h-200px md:h-[450px] w-full"
+                  />
                 </CarouselItem>
-                <CarouselItem key={id} className="pl-1 ">
-                  <img src={image.rear_view} alt="" />
+                <CarouselItem key={_id} className="pl-1 ">
+                  <img
+                    src={image?.rear_view}
+                    alt=""
+                    className="h-200px md:h-[450px] w-full"
+                  />
                 </CarouselItem>
-                <CarouselItem key={id} className="pl-1 ">
-                  <img src={image.side_view} alt="" />
-                </CarouselItem>
-                <CarouselItem key={id} className="pl-1 ">
-                  <img src={image.front_view} alt="" />
+                <CarouselItem key={_id} className="pl-1 ">
+                  <img
+                    src={image?.side_view}
+                    alt=""
+                    className="h-200px md:h-[450px] w-full"
+                  />
                 </CarouselItem>
               </CarouselContent>
               <CarouselPrevious />
@@ -204,13 +239,13 @@ const BicycleDetails = () => {
                   Frame
                 </TableCell>
                 <TableCell>
-                  Optimized Construction {frame.material} frame with{" "}
-                  {frame.size} travel.
+                  Optimized Construction {frame?.material} frame with{" "}
+                  {frame?.size} travel.
                 </TableCell>
               </TableRow>
               <TableRow>
                 <TableCell className="md:text-lg">Color</TableCell>
-                <TableCell>{frame.color}</TableCell>
+                <TableCell>{frame?.color}</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell className="md:text-lg">Wheel</TableCell>
@@ -222,8 +257,9 @@ const BicycleDetails = () => {
               <TableRow>
                 <TableCell className="md:text-lg">Gear</TableCell>
                 <TableCell>
-                  The {gear?.brand} {gear?.type} offers an impressive{" "}
-                  {gear?.speed} speed.
+                  The {gear?.shifters} offers an impressive{" "}
+                  {gear?.derailleurs?.front} front and {gear?.derailleurs?.rear}{" "}
+                  and {gear?.number_of_gears} gears.
                 </TableCell>
               </TableRow>
               <TableRow>

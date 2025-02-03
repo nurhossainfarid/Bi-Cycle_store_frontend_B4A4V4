@@ -28,7 +28,7 @@ const routes = createBrowserRouter([
         element: <AllBicycle />,
       },
       {
-        path: "bicycle-details/:cycleId",
+        path: "bicycle-details/:bicycleId",
         element: <BicycleDetails />,
       },
       {

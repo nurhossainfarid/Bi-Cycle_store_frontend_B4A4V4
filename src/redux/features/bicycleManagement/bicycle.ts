@@ -33,9 +33,9 @@ const useBicycleApi = baseApi.injectEndpoints({
       },
     }),
     getBicycle: builder.query({
-      query: (id: string) => {
+      query: (bicycleId: string) => {
         return {
-          url: `/bicycles/${id}`,
+          url: `/bicycles/${bicycleId}`,
           method: "GET",
         };
       },
@@ -48,7 +48,7 @@ const useBicycleApi = baseApi.injectEndpoints({
     updateBicycle: builder.mutation({
       query: ({ id, data }: { id: string; data: Partial<TBicycleData> }) => ({
         url: `/bicycles/${id}`,
-        method: "PUT", 
+        method: "PUT",
         body: data,
       }),
     }),
@@ -66,5 +66,3 @@ export const {
   useGetAllBicyclesQuery,
   useGetBicycleQuery,
 } = useBicycleApi;
-
-
