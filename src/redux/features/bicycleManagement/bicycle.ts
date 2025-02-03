@@ -9,6 +9,7 @@ const useBicycleApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["bicycle"],
     }),
     getAllBicycles: builder.query({
       query: (args) => {
@@ -26,6 +27,7 @@ const useBicycleApi = baseApi.injectEndpoints({
           params: params,
         };
       },
+      providesTags: ["bicycle", "deleteBicycle"],
       transformResponse: (response: TResponseRedux<TBicycleData[]>) => {
         return {
           data: response.data,
@@ -57,6 +59,7 @@ const useBicycleApi = baseApi.injectEndpoints({
         url: `/bicycles/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["deleteBicycle"],
     }),
   }),
 });
