@@ -30,4 +30,22 @@ export const TFontSizeMap: TFontSize = {
   "6xl": "96px",
 };
 
-
+export type TUser = {
+  _id: string;
+  email: string;
+  name: string;
+  password: string;
+  needsPasswordChange: boolean;
+  passwordChangedAt?: Date;
+  role: "admin" | "customer";
+  gender?: "male" | "female" | "others";
+  dateOfBirth?: string;
+  contactNo?: string;
+  bloodGroup?: "A+" | "A-" | "B+" | "B-" | "AB+" | "AB-" | "O+" | "O-";
+  presentAddress?: string;
+  permanentAddress?: string;
+  profileImg?: string;
+  Orders: string;
+  isBlocked: boolean;
+  isDeleted: boolean;
+};
