@@ -4,11 +4,13 @@ import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
 import AllBicycle from "@/pages/bicycle/AllBicycle";
 import BicycleDetails from "@/pages/bicycle/BicycleDetails";
+import Checkout from "@/pages/order/Checkout";
 import { AppSidebar } from "@/pages/dashboard/AppSidebar";
 import Dashboard from "@/pages/dashboard/Dashboard";
 import Home from "@/pages/home/Home";
 import NotFound from "@/pages/notfound/NotFound";
 import { createBrowserRouter } from "react-router-dom";
+import Cart from "@/pages/order/Cart";
 
 const routes = createBrowserRouter([
   {
@@ -34,6 +36,14 @@ const routes = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
       },
       {
         path: "*",

@@ -12,12 +12,27 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
 import { TBicycleData } from "@/types";
+import { useAppDispatch } from "@/redux/hooks/hooks";
+import { addToCart } from "@/redux/features/cart/cartSlice";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   bicycle: TBicycleData;
 }
 
+export interface IProduct {
+  _id: string;
+  name: string;
+  price: number;
+  description: string;
+  stock: number;
+  imageUrl?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 const ProductCard: FC<ProductCardProps> = ({ bicycle }) => {
+  const dispatch = useAppDispatch();
   const {
     _id: bicycleId,
     name,
@@ -25,9 +40,24 @@ const ProductCard: FC<ProductCardProps> = ({ bicycle }) => {
     brand,
     frame,
     quantity,
+    price,
     type,
     image,
   } = bicycle;
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        product: bicycleId,
+        name: name,
+        price: price,
+        quantity: 1,
+        stock: quantity,
+        imageUrl: image?.front_view,
+      })
+    );
+    toast.success("Bicycle added to cart");
+  };
 
   return (
     <Card className="hover:border-2 hover:border-white hover:scale-105 transition-transform duration-300">
@@ -84,7 +114,10 @@ const ProductCard: FC<ProductCardProps> = ({ bicycle }) => {
         <Button variant="outline" className="text-[8px] md:text-sm p-2">
           <Link to={`/bicycle-details/${bicycleId}`}>READ MORE</Link>
         </Button>
-        <Button className="text-white font-outfit text-[8px] md:text-sm p-2">
+        <Button
+          className="text-white font-outfit text-[8px] md:text-sm p-2"
+          onClick={() => handleAddToCart()}
+        >
           <ShoppingCart /> ADD TO CART
         </Button>
       </CardFooter>
