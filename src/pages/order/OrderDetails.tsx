@@ -46,9 +46,7 @@ export default function OrderDetails() {
   const { isLoading, data } = useGetOrdersQuery(undefined, {
     refetchOnMountOrArgChange: true,
   });
-  const orderData: Order[] = data?.data.filter(
-    (order) => order.user === userData?.data?._id
-  );
+  const orderData: Order[] = data?.data.filter((order: Order) => order.user === userData?.data?._id);
 
   return isLoading ? (
     <Skeleton />

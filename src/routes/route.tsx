@@ -13,6 +13,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Cart from "@/pages/order/Cart";
 import OrderVerification from "@/pages/order/VerifyOrder";
 import OrderDetails from "@/pages/order/OrderDetails";
+import ProtectedRoute from "@/components/layout/ProtectedRoute";
 
 const routes = createBrowserRouter([
   {
@@ -25,7 +26,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "about",
-        element: <About />,
+        element: (
+          <ProtectedRoute role="user">
+            <About />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "all-bicycles",

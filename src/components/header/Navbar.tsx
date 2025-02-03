@@ -10,6 +10,12 @@ import { Menu, X, ShoppingCart } from "lucide-react";
 import Logo from "../../images/cylezen-logo.png";
 import { Badge } from "../ui/badge";
 import { useAppSelector } from "@/redux/hooks/hooks";
+import {
+  selectCurrentUser,
+  useCurrentToken,
+} from "@/redux/features/auth/authSlice";
+import { verifyToken } from "@/utils/verifyToken";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 const Navbar = () => {
   const cartData = useAppSelector((state) => state.cart);
@@ -17,6 +23,12 @@ const Navbar = () => {
   const { textColor } = themeHandler({ theme });
   const [isOpen, setIsOpen] = useState(false);
   const cartCount = cartData?.items.length;
+  const token = useAppSelector(useCurrentToken);
+  let user;
+
+  if (token) {
+    user = verifyToken(token);
+  }
 
   return (
     <nav className="mx-auto h-16 flex items-center relative z-10 py-2 md:py-10 px-5 md:px-10 lg:px-20">
@@ -78,20 +90,29 @@ const Navbar = () => {
         </div>
       )}
       {/* Right Section */}
-      <div className="ml-auto hidden md:flex gap-6 items-center">
-        <Link to="/login">
-          <Button
-            variant="outline"
-            className={cn(`text-${textColor} font-outfit`)}
-          >
-            Login
+      {!user ? (
+        <div className="ml-auto hidden md:flex gap-6 items-center">
+          <Link to="/login">
+            <Button
+              variant="outline"
+              className={cn(`text-${textColor} font-outfit`)}
+            >
+              Login
+            </Button>
+          </Link>
+          <Button className={cn(`text-${textColor} font-outfit`)}>
+            <Link to="/register">Register</Link>
           </Button>
-        </Link>
-        <Button className={cn(`text-${textColor} font-outfit`)}>
-          <Link to="/register">Register</Link>
-        </Button>
-        <ModeToggle />
-      </div>
+          <ModeToggle />
+        </div>
+      ) : (
+        <div className="ml-auto hidden md:flex gap-6 items-center">
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>CZ</AvatarFallback>
+          </Avatar>
+        </div>
+      )}
     </nav>
   );
 };
