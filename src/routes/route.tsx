@@ -11,6 +11,8 @@ import Home from "@/pages/home/Home";
 import NotFound from "@/pages/notfound/NotFound";
 import { createBrowserRouter } from "react-router-dom";
 import Cart from "@/pages/order/Cart";
+import OrderVerification from "@/pages/order/VerifyOrder";
+import OrderDetails from "@/pages/order/OrderDetails";
 
 const routes = createBrowserRouter([
   {
@@ -42,8 +44,12 @@ const routes = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: "checkout",
-        element: <Checkout />,
+        path: "orderDetails",
+        element: <OrderDetails />,
+      },
+      {
+        path: "orders/verification",
+        element: <OrderVerification />,
       },
       {
         path: "*",
