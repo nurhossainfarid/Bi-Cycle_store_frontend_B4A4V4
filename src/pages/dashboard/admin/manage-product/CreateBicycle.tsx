@@ -15,16 +15,9 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 const CreateBicycle = () => {
-  // const { control } = useForm();
-  const [addBicycle, { isError }] = useAddBicycleMutation();
-  const {
-    
-  } = singleBicycleData;
-
-  if (isError) {
-    toast.error("Failed to add bicycle");
-    return;
-  }
+  const { control, reset } = useForm();
+  const [addBicycle] =
+    useAddBicycleMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("Adding bicycle...");
@@ -51,8 +44,8 @@ const CreateBicycle = () => {
       console.log("Response:", res);
 
       toast.success("Bicycle added successfully!", { id: toastId });
+      reset();
     } catch (error) {
-      console.error("Error adding bicycle:", error);
       toast.error("Failed to add bicycle", { id: toastId });
     }
   };

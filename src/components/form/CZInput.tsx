@@ -7,9 +7,10 @@ type TInputProps = {
   type: string;
   name: string;
   label?: string;
+  defaultValue?: string;
 };
 
-const CZInput = ({ type, name, label }: TInputProps) => {
+const CZInput = ({ type, name, label, defaultValue }: TInputProps) => {
   return (
     <div style={{ marginBottom: "20px" }}>
       <Controller
@@ -23,6 +24,7 @@ const CZInput = ({ type, name, label }: TInputProps) => {
               id={name}
               size={20}
               className="mt-2"
+              defaultValue={defaultValue}
             />
             {error && <small style={{ color: "red" }}>{error.message}</small>}
           </FormItem>

@@ -535,6 +535,14 @@ export const singleBicycleData = {
     rim_material: "Alloy",
     tire_type: "Knobby",
   },
+  gear: {
+    shifters: "Shimano Nexus",
+    derailleurs: {
+      front: "None",
+      rear: "Shimano Nexus",
+    },
+    number_of_gears: 3,
+  },
   brakes: {
     type: "Disc",
     brand: "Shimano",
@@ -547,6 +555,10 @@ export const singleBicycleData = {
     type: "Flat",
     material: "Aluminum",
     width: "720mm",
+  },
+  saddle: {
+    type: "Leather",
+    brand: "Brooks",
   },
   pedals: {
     type: "Clipless",
