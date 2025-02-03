@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from "../ui/card";
 import { Button } from "../ui/button";
-import Paragraph from "../ui/paragraph";
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
@@ -15,20 +14,10 @@ import { TBicycleData } from "@/types";
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { addToCart } from "@/redux/features/cart/cartSlice";
 import { toast } from "sonner";
+import { v4 as uuidv4 } from "uuid";
 
 interface ProductCardProps {
   bicycle: TBicycleData;
-}
-
-export interface IProduct {
-  _id: string;
-  name: string;
-  price: number;
-  description: string;
-  stock: number;
-  imageUrl?: string;
-  createdAt: string;
-  updatedAt: string;
 }
 
 const ProductCard: FC<ProductCardProps> = ({ bicycle }) => {
@@ -48,7 +37,7 @@ const ProductCard: FC<ProductCardProps> = ({ bicycle }) => {
   const handleAddToCart = () => {
     dispatch(
       addToCart({
-        product: bicycleId,
+        bicycle: bicycleId,
         name: name,
         price: price,
         quantity: 1,

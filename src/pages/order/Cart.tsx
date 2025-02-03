@@ -1,13 +1,44 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { useAppSelector } from "@/redux/hooks/hooks";
-
 import { Trash2 } from "lucide-react";
+import { useAppSelector, useAppDispatch } from "@/redux/hooks/hooks";
+import {
+  removeFromCart,
+  updateQuantity,
+} from "@/redux/features/cart/cartSlice";
+import { useCreateOrderMutation } from "@/redux/features/order/order";
+import { useEffect } from "react";
+import { toast } from "sonner";
 
 const Cart = () => {
+  const dispatch = useAppDispatch();
   const cartData = useAppSelector((state) => state.cart);
+  const [createOrder, { isLoading, isSuccess, data, isError, error }] =
+    useCreateOrderMutation();
+
   const { items, totalQuantity, totalPrice } = cartData;
+
+  const handlePlaceOrder = async () => {
+    console.log(cartData.items);
+    await createOrder({ bicycles: cartData.items });
+  };
+
+  const toastId = "cart";
+  useEffect(() => {
+    if (isLoading) toast.loading("Processing ...", { id: toastId });
+
+    if (isSuccess) {
+      toast.success(data?.message, { id: toastId });
+      if (data?.data) {
+        setTimeout(() => {
+          window.location.href = data.data;
+        }, 1000);
+      }
+    }
+
+    if (isError) toast.error(JSON.stringify(error), { id: toastId });
+  }, [data?.data, data?.message, error, isError, isLoading, isSuccess]);
 
   return (
     <Card className="max-w-lg mx-auto">
@@ -19,7 +50,7 @@ const Cart = () => {
           <ul className="space-y-4">
             {items.map((item) => (
               <li
-                key={item.id}
+                key={item.bicycle}
                 className="flex items-center gap-4 border-b pb-3"
               >
                 <img
@@ -34,7 +65,12 @@ const Cart = () => {
                       size="icon"
                       variant="outline"
                       onClick={() =>
-                        updateQuantity(item.id, Math.max(item.quantity - 1, 1))
+                        dispatch(
+                          updateQuantity({
+                            id: item.bicycle,
+                            quantity: Math.max(item.quantity - 1, 1),
+                          })
+                        )
                       }
                     >
                       -
@@ -44,9 +80,11 @@ const Cart = () => {
                       size="icon"
                       variant="outline"
                       onClick={() =>
-                        updateQuantity(
-                          item.id,
-                          Math.min(item.quantity + 1, item.stock)
+                        dispatch(
+                          updateQuantity({
+                            id: item.bicycle,
+                            quantity: Math.min(item.quantity + 1, item.stock),
+                          })
                         )
                       }
                     >
@@ -61,7 +99,7 @@ const Cart = () => {
                   size="icon"
                   variant="ghost"
                   className="text-red-600"
-                  onClick={() => removeFromCart(item.id)}
+                  onClick={() => dispatch(removeFromCart(item.bicycle))}
                 >
                   <Trash2 size={16} />
                 </Button>
@@ -87,8 +125,10 @@ const Cart = () => {
           <span className="text-lg font-bold">${totalPrice.toFixed(2)}</span>
         </div>
 
-        {cartItems.length > 0 && (
-          <Button className="w-full mt-4">Proceed to Checkout</Button>
+        {items.length > 0 && (
+          <Button className="w-full mt-4 text-white" onClick={handlePlaceOrder}>
+            Proceed to Checkout
+          </Button>
         )}
       </CardContent>
     </Card>

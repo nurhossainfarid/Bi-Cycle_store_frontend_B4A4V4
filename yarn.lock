@@ -787,16 +787,9 @@
   dependencies:
     "@radix-ui/react-primitive" "2.0.1"
 
-"@radix-ui/react-slot@1.1.1":
+"@radix-ui/react-slot@1.1.1", "@radix-ui/react-slot@^1.1.1":
   version "1.1.1"
   resolved "https://registry.npmjs.org/@radix-ui/react-slot/-/react-slot-1.1.1.tgz"
-  integrity sha512-RApLLOcINYJA+dMVbOju7MYv1Mb2EBp2nH4HdDzXTSyaR5optlm6Otrz1euW3HbdOR8UmmFK06TD+A9frYWv+g==
-  dependencies:
-    "@radix-ui/react-compose-refs" "1.1.1"
-
-"@radix-ui/react-slot@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-1.1.1.tgz#ab9a0ffae4027db7dc2af503c223c978706affc3"
   integrity sha512-RApLLOcINYJA+dMVbOju7MYv1Mb2EBp2nH4HdDzXTSyaR5optlm6Otrz1euW3HbdOR8UmmFK06TD+A9frYWv+g==
   dependencies:
     "@radix-ui/react-compose-refs" "1.1.1"
@@ -1189,7 +1182,7 @@
     "@radix-ui/react-tooltip" "^1.1.7"
     "@reduxjs/toolkit" "^2.5.0"
     "@types/swiper" "^6.0.0"
-    Bi-Cycle_store_frontend_B4A4V4 "file:C:/Users/AORUS/AppData/Local/Yarn/Cache/v6/npm-i-ycle-store-frontend-4-4-4-0.0.0-73c6d05f-29d7-4a4a-952c-fb8ab449ccd3-1738596759099/node_modules/Bi-Cycle_store_frontend_B4A4V4"
+    Bi-Cycle_store_frontend_B4A4V4 "file:C:/Users/AORUS/AppData/Local/Yarn/Cache/v6/npm-i-ycle-store-frontend-4-4-4-0.0.0-93ae86ee-03c7-476a-ac1c-75c65837265c-1738610379735/node_modules/Bi-Cycle_store_frontend_B4A4V4"
     class-variance-authority "^0.7.1"
     clsx "^2.1.1"
     date-fns "^4.1.0"

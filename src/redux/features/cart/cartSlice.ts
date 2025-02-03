@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface ICartItem {
-  product: string; // Product ID
+  bicycle: string; // Product ID
   name: string;
   price: number;
   quantity: number;
@@ -26,9 +26,8 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action: PayloadAction<ICartItem>) {
-      console.log({ state: state.items });
       const existingItem = state.items.find(
-        (item) => item.product === action.payload.product
+        (item) => item.bicycle === action.payload.bicycle
       );
       if (existingItem) {
         existingItem.quantity += action.payload.quantity;
@@ -40,11 +39,11 @@ const cartSlice = createSlice({
     },
     removeFromCart(state, action: PayloadAction<string>) {
       const itemId = action.payload;
-      const existingItem = state.items.find((item) => item.product === itemId);
+      const existingItem = state.items.find((item) => item.bicycle === itemId);
       if (existingItem) {
         state.totalQuantity -= existingItem.quantity;
         state.totalPrice -= existingItem.price * existingItem.quantity;
-        state.items = state.items.filter((item) => item.product !== itemId);
+        state.items = state.items.filter((item) => item.bicycle !== itemId);
       }
     },
     updateQuantity(
@@ -52,7 +51,7 @@ const cartSlice = createSlice({
       action: PayloadAction<{ id: string; quantity: number }>
     ) {
       const { id, quantity } = action.payload;
-      const existingItem = state.items.find((item) => item.product === id);
+      const existingItem = state.items.find((item) => item.bicycle === id);
       if (existingItem && quantity > 0) {
         const quantityDifference = quantity - existingItem.quantity;
         existingItem.quantity = quantity;
