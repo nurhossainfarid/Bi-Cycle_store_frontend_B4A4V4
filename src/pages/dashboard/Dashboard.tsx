@@ -1,46 +1,25 @@
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { useState } from "react";
-import {
-  SidebarProvider,
-} from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
+import CreateBicycle from "./admin/manage-product/CreateBicycle";
+import Orders from "./admin/manage-order/Orders";
+import Users from "./admin/manage-user/Users";
+import Bicycles from "./admin/manage-product/Bicycles";
 
-const UserDashboard = ({ children }: { children: React.ReactNode }) => {
-  const [activeTab, setActiveTab] = useState("orders");
+const Dashboard = () => {
+  const [activeTab, setActiveTab] = useState("create-bicycle");
 
   return (
-    <SidebarProvider>
-      <div className="flex h-screen">
-        {/* Sidebar */}
-        <AppSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-        {/* Main content */}
-        <div className="flex-1 p-6">
-          {/* Orders Section */}
-          {activeTab === "orders" && (
-            <div>
-              <h3 className="text-xl">Manage Orders</h3>
-              {/* Add your order management table or other components */}
-            </div>
-          )}
-
-          {/* Products Section */}
-          {activeTab === "products" && (
-            <div>
-              <h3 className="text-xl">Manage Products</h3>
-              {/* Add your product management table or other components */}
-            </div>
-          )}
-
-          {/* Profile Section */}
-          {activeTab === "profile" && (
-            <div>
-              <h3 className="text-xl">Your Profile</h3>
-              {/* Add your profile information */}
-            </div>
-          )}
-        </div>
+    <SidebarProvider className="bg-gray-900 text-white relative">
+      <AppSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <div className="flex-1">
+        {activeTab === "create-bicycle" && <CreateBicycle />}
+        {activeTab === "bicycles" && <Bicycles />}
+        {activeTab === "users" && <Users />}
+        {activeTab === "orders" && <Orders />}
       </div>
     </SidebarProvider>
   );
 };
 
-export default UserDashboard;
+export default Dashboard;

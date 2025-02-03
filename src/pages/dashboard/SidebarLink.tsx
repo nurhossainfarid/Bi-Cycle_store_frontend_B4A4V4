@@ -1,6 +1,6 @@
 interface SidebarLinkProps {
   text: string;
-  icon: string; // Can be a string or React component if you use icons like lucide-react
+  icon?: string; // Can be a string or React component if you use icons like lucide-react
   onClick: () => void;
   isActive: boolean;
 }
@@ -14,7 +14,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`flex items-center p-3 w-full text-left rounded-md transition-all duration-200 hover:bg-gray-700 ${
+      className={`flex items-start p-3 w-full text-left rounded-md transition-all duration-200 hover:bg-gray-700 ${
         isActive ? "bg-gray-800 text-white" : "text-gray-300"
       }`}
     >

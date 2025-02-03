@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { FieldValues } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import PHForm from "@/components/form/PHForm";
-import PHInput from "@/components/form/PHInput";
+import PHForm from "@/components/form/CZForm";
+import PHInput from "@/components/form/CZInput";
 import Image7 from "../../images/login7.png";
 import { useRegisterMutation } from "@/redux/features/auth/authApi";
 import { toast } from "sonner";

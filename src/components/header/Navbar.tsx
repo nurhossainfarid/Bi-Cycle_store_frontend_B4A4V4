@@ -16,7 +16,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="mx-auto h-16 flex items-center">
+    <nav className="mx-auto h-16 flex items-center relative z-10 py-2 md:py-10 px-5 md:px-10 lg:px-20">
       {/* Logo */}
       <Link to="/">
         <img

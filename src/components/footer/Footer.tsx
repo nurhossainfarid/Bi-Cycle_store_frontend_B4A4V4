@@ -21,7 +21,7 @@ const Footer = () => {
   const timeLeft = useOfferedTimeLeft("2025-02-20T23:59:59");
 
   return (
-    <div className="mx-auto w-full mt-5 md:10 lg:mt-20">
+    <div className="mx-auto w-full mt-5 md:10 lg:mt-20 md:pt-2 pb-5 md:pb-10 px-5 md:px-10 lg:px-20">
       <div className="bg-gradient-to-r from-bright-royal-blue from-0% to-electric-violet to-100% py-5 px-5 md:px-10 flex flex-col md:flex-row justify-between items-center gap-5 rounded-md">
         <div className="flex gap-5 items-center">
           <img src={Img1} alt="" className="w-20" />

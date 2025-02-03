@@ -18,7 +18,7 @@ type TFormProps = {
   children: ReactNode;
 } & TFormConfig;
 
-const PHForm = ({
+const CZForm = ({
   onSubmit,
   children,
   defaultValues,
@@ -45,7 +45,7 @@ const PHForm = ({
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(submit)}
-        className="p-6 shadow-md rounded-md w-96"
+        className="p-6 shadow-md rounded-md"
       >
         {children}
         <Button type="submit" className="w-full mt-4 text-white">
@@ -56,4 +56,4 @@ const PHForm = ({
   );
 };
 
-export default PHForm;
+export default CZForm;

@@ -474,3 +474,93 @@ export const NewsData = [
     image: News3,
   },
 ];
+
+export const bicycleTypeOptions = [
+  { value: "Mountain", label: "Mountain" },
+  { value: "Road", label: "Road" },
+  { value: "Hybrid", label: "Hybrid" },
+  { value: "Electric", label: "Electric" },
+  { value: "BMX", label: "BMX" },
+];
+
+export const frameMaterialOptions = [
+  { value: "Aluminum", label: "Aluminum" },
+  { value: "Carbon Fiber", label: "Carbon Fiber" },
+  { value: "Steel", label: "Steel" },
+  { value: "Titanium", label: "Titanium" },
+  { value: "Chromoly", label: "Chromoly" },
+  { value: "Magnesium", label: "Magnesium" },
+];
+
+export const frameColorOptions = [
+  { value: "White", label: "White" },
+  { value: "Green", label: "Green" },
+  { value: "Yellow", label: "Yellow" },
+  { value: "Blue", label: "Blue" },
+  { value: "Red", label: "Red" },
+  { value: "Matte Black", label: "Matte Black" },
+  { value: "Glossy Red", label: "Glossy Red" },
+  { value: "Silver", label: "Silver" },
+];
+
+export const frameSizeOptions = [
+  { value: "48 cm", label: 48 },
+  { value: "50 cm", label: 50 },
+  { value: "52 cm", label: 52 },
+  { value: "54 cm", label: 54 },
+  { value: "56 cm", label: 56 },
+  { value: "58 cm", label: 58 },
+  { value: "60 cm", label: 60 },
+  { value: "62 cm", label: 62 },
+  { value: "64 cm", label: 64 },
+  { value: "66 cm", label: 66 },
+  { value: "68 cm", label: 68 },
+  { value: "70 cm", label: 70 },
+  { value: "72 cm", label: 72 },
+];
+
+export const singleBicycleData = {
+  name: "Mountain Explorer 5000",
+  brand: "TrailMaster",
+  model: "MX-5000",
+  description: "A robust mountain bike designed for off-road adventures.",
+  type: "Mountain",
+  frame: {
+    material: "Aluminum",
+    size: "M",
+    color: "Red",
+  },
+  wheel: {
+    size: 27,
+    rim_material: "Alloy",
+    tire_type: "Knobby",
+  },
+  brakes: {
+    type: "Disc",
+    brand: "Shimano",
+  },
+  suspension: {
+    type: "Full",
+    front_fork: "RockShox",
+  },
+  handlebar: {
+    type: "Flat",
+    material: "Aluminum",
+    width: "720mm",
+  },
+  pedals: {
+    type: "Clipless",
+    material: "Composite",
+  },
+  weight: "13kg",
+  price: 799.99,
+  quantity: 10,
+  inStock: true,
+  image: {
+    front_view: "https://i.ibb.co.com/FkcqGCrP/pCycle21.jpg",
+    side_view: "https://i.ibb.co.com/0RxkmGNw/pCycle19.webp",
+    back_view: "https://i.ibb.co.com/yctgFR06/closeup-bicycle5.jpg",
+    rear_view: "https://i.ibb.co.com/3yVDjJsc/closeup-bicycle6.jpg",
+    close_up_gears: "https://i.ibb.co.com/cKfgcPyn/closeup-bicycle10.jpg",
+  },
+};

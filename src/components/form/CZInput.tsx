@@ -1,4 +1,3 @@
-// PHInput.tsx
 import { Controller } from "react-hook-form";
 import { FormItem } from "../ui/form";
 import { Input } from "../ui/input";
@@ -10,7 +9,7 @@ type TInputProps = {
   label?: string;
 };
 
-const PHInput = ({ type, name, label }: TInputProps) => {
+const CZInput = ({ type, name, label }: TInputProps) => {
   return (
     <div style={{ marginBottom: "20px" }}>
       <Controller
@@ -33,4 +32,4 @@ const PHInput = ({ type, name, label }: TInputProps) => {
   );
 };
 
-export default PHInput;
+export default CZInput;

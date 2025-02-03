@@ -2,18 +2,43 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarHeader,
+  SidebarMenu,
 } from "@/components/ui/sidebar";
 import SidebarLink from "./SidebarLink";
-import SidebarLinkWithDropdown from "./SidebarLinkWithDropdown";
+import SidebarLinkWithDropdown from "./CollapsibleMenu";
+import CollapsibleMenu from "./CollapsibleMenu";
+import { useAppSelector } from "@/redux/hooks/hooks";
+import { useCurrentToken } from "@/redux/features/auth/authSlice";
+import { verifyToken } from "@/utils/verifyToken";
 
 interface AppSidebarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
 }
 
+const sidebarItems = [
+  {
+    title: "View Order",
+    value: "view-order",
+  },
+  {
+    title: "Profile Setting",
+    value: "profile-setting",
+  },
+];
+
 export function AppSidebar({ activeTab, setActiveTab }: AppSidebarProps) {
-  const role: "user" | "admin" = "admin";
+  const token = useAppSelector(useCurrentToken);
+  let user;
+
+  if (token) {
+    user = verifyToken(token);
+  }
+
   const userSubLinks = [
     { text: "Create User", onClick: () => setActiveTab("create-user") },
     { text: "Users", onClick: () => setActiveTab("users") },
@@ -36,65 +61,33 @@ export function AppSidebar({ activeTab, setActiveTab }: AppSidebarProps) {
   ];
 
   return (
-    <Sidebar className="w-64 bg-gray-900 text-white h-100 mt-20">
-      <SidebarHeader className="text-xl font-bold p-4">
-        {role} Dashboard
-      </SidebarHeader>
-      {role === "admin" && (
-        <SidebarContent>
-          <SidebarLinkWithDropdown
-            text="Manage Users"
-            icon="👤"
-            subLinks={userSubLinks}
-            isActive={
-              activeTab === "create-user" ||
-              activeTab === "view-users" ||
-              activeTab === "update-user"
-            }
-            onClick={() => {}}
-          />
-          <SidebarLinkWithDropdown
-            text="Manage Products"
-            icon="📦"
-            subLinks={productSubLinks}
-            isActive={
-              activeTab === "add-product" ||
-              activeTab === "view-products" ||
-              activeTab === "update-product"
-            }
-            onClick={() => {}}
-          />
-          <SidebarLinkWithDropdown
-            text="Manage Orders"
-            icon="🛒"
-            subLinks={orderSubLinks}
-            isActive={
-              activeTab === "view-orders" ||
-              activeTab === "pending-orders" ||
-              activeTab === "completed-orders"
-            }
-            onClick={() => {}}
-          />
-        </SidebarContent>
-      )}
-      {role === "user" && (
-        <SidebarContent>
-          <SidebarLink
-            text="Orders"
-            icon="📦"
-            onClick={() => setActiveTab("orders")}
-            isActive={activeTab === "orders"}
-          />
-        </SidebarContent>
-      )}
-      <SidebarFooter>
-        <SidebarLink
-          text="Profile"
-          icon="👤"
-          onClick={() => setActiveTab("profile")}
-          isActive={activeTab === "profile"}
-        />
-      </SidebarFooter>
+    <Sidebar className="w-64 h-[100%] bg-gray-900 text-white bg-inherit absolute">
+      <SidebarContent>
+        <SidebarHeader className="text-xl font-bold p-4 uppercase">
+          {user?.role} Dashboard
+        </SidebarHeader>
+        {/* Sidebar Group */}
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {/* Collapsible Menu */}
+              <CollapsibleMenu
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+              />
+
+              {/* Regular Menu Items */}
+              {sidebarItems.map((item) => (
+                <SidebarLink
+                  text={item.title}
+                  onClick={() => setActiveTab(item.value)}
+                  isActive={activeTab === item.value}
+                />
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
     </Sidebar>
   );
 }
