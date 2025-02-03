@@ -29,12 +29,13 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
-import { useGetBicycleQuery } from "@/redux/features/bicycleManagement/bicycle";
+import {
+  useGetBicycleQuery,
+} from "@/redux/features/bicycleManagement/bicycle";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const BicycleDetails = () => {
   const { bicycleId } = useParams();
-
   const { data, isLoading } = useGetBicycleQuery(bicycleId!);
   if (isLoading) {
     return (
@@ -72,7 +73,7 @@ const BicycleDetails = () => {
   } = bicycle || {}; // Provide a default empty object to avoid undefined errors
 
   return (
-    <div className="flex flex-col gap-5 md:gap-10">
+    <div className="flex flex-col gap-5 md:gap-10 pb-5 md:pb-10 px-5 md:px-10 lg:px-20">
       <div className="flex flex-col md:flex-row items-start justify-between gap-5 md:gap-20">
         <div className="flex flex-col items-center gap-5">
           <div className="pl-6 md:pl-0">
