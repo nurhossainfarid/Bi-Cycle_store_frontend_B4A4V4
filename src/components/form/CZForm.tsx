@@ -43,10 +43,7 @@ const CZForm = ({
 
   return (
     <FormProvider {...methods}>
-      <form
-        onSubmit={methods.handleSubmit(submit)}
-        className="shadow-md rounded-md"
-      >
+      <form onSubmit={methods.handleSubmit(submit)} className="rounded-md">
         {children}
         <Button type="submit" className="w-full mt-4 text-white">
           Submit

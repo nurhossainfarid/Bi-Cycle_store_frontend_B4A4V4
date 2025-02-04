@@ -13,6 +13,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useForm } from "react-hook-form";
 
 type Option = {
   value: string;
@@ -20,7 +21,18 @@ type Option = {
   disabled?: boolean;
 };
 
-const CZSelect = ({ label, name, options, disabled = false, control }: { label: string; name: string; options: Option[]; disabled?: boolean; control: any }) => {
+const CZSelect = ({
+  label,
+  name,
+  options,
+  disabled = false,
+}: {
+  label: string;
+  name: string;
+  options: Option[];
+  disabled?: boolean;
+}) => {
+  const { control } = useForm();
   return (
     <FormField
       control={control}
