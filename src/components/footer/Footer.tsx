@@ -26,20 +26,16 @@ const Footer = () => {
         <div className="flex gap-5 items-center">
           <img src={Img1} alt="" className="w-20" />
           <div>
-            <Title
-              text="🔥 BIGGEST OFFER! Up to 50% OFF"
-              fontSize="xl"
-              textAlign="left"
-            />
-            <Title
-              text="—Hurry, limited time! ⏳"
-              fontSize="xl"
-              textAlign="left"
-            />
+            <h1 className="font-outfit md:text-2xl font-semibold">
+              🔥 BIGGEST OFFER! Up to 50% OFF
+            </h1>
+            <h1 className="font-outfit md:text-2xl font-semibold">
+              —Hurry, limited time! ⏳
+            </h1>
           </div>
         </div>
         <div>
-          <Title text={timeLeft} fontSize="3xl" />
+          <h1 className="font-outfit text-4.5xl font-semibold">{timeLeft}</h1>
         </div>
         <Button
           variant={"secondary"}
@@ -48,28 +44,22 @@ const Footer = () => {
           Grab it now!
         </Button>
       </div>
-      <div className="flex flex-col md:flex-row justify-between items-start gap-10 pt-10">
-        <div className="flex flex-col gap-6" style={{ width: "30%" }}>
-          <Title
-            text="TRAIL"
-            fontSize="xxxl"
-            color={textColor}
-            textAlign="left"
-          />
-          <Paragraph
-            text={
-              "Sed ut perspiciatis unde omnis iste natus voluptatem accusantium doloremque laudanti totam aperiam inventore veritatis congue tristique ultrices. Purus finibus dapibus nunc neque commodo tellusin dapi magna quam posuere."
-            }
-            fontSize="sm"
-          />
+      <div className="flex flex-col md:flex-row justify-between items-start gap-5 md:gap-10 pt-10">
+        <div className="flex flex-col gap-2 md:gap-6 w-full md:w-[30%]">
+          <h1 className="font-outfit font-semibold text-xl md:text-4xl">
+            TRAIL
+          </h1>
+          <p className="font-inter text-sm text-white/80">
+            Sed ut perspiciatis unde omnis iste natus voluptatem accusantium
+            doloremque laudanti totam aperiam inventore veritatis congue
+            tristique ultrices. Purus finibus dapibus nunc neque commodo
+            tellusin dapi magna quam posuere.
+          </p>
           <div>
-            <Title
-              text="Social Media"
-              fontSize="xxl"
-              color={textColor}
-              textAlign="left"
-            />
-            <div className="flex gap-5 mt-5" style={{ color: textColor }}>
+            <h1 className="font-outfit font-semibold text-lg md:text-3xl">
+            Social Media
+            </h1>
+            <div className="flex gap-5 mt-2 md:mt-5" style={{ color: textColor }}>
               <Facebook
                 className="p-2 border-2 hover:border-vivid-amethyst border-bright-royal-blue animate-pulse hover:scale-110 duration-1500"
                 size={40}

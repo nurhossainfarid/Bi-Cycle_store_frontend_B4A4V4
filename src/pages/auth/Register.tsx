@@ -50,7 +50,7 @@ const Register = () => {
       }}
     >
       <div
-        className=" w-96 rounded-md shadow-md relative top-1/4 left-40"
+        className=" w-96 rounded-md shadow-md relative top-1/4 left-40 p-5 md:p-8"
         style={{
           borderRadius: "16px",
           boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
@@ -60,7 +60,6 @@ const Register = () => {
         }}
       >
         <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
-          <h1 style={{ marginBottom: "10px" }}>Register</h1>
           <PHInput type="text" name="name" label="Name:" />
           <PHInput type="text" name="email" label="Email:" />
           <div className="relative">

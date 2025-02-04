@@ -4,16 +4,15 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
 } from "@/components/ui/sidebar";
 import SidebarLink from "./SidebarLink";
-import SidebarLinkWithDropdown from "./CollapsibleMenu";
 import CollapsibleMenu from "./CollapsibleMenu";
-import { useAppSelector } from "@/redux/hooks/hooks";
-import { useCurrentToken } from "@/redux/features/auth/authSlice";
-import { verifyToken } from "@/utils/verifyToken";
+import { useAppDispatch } from "@/redux/hooks/hooks";
+import { logout } from "@/redux/features/auth/authSlice";
+import { Link, useNavigate } from "react-router-dom";
+import { LogOutIcon, User, HomeIcon, ListOrderedIcon } from "lucide-react";
 
 interface AppSidebarProps {
   activeTab: string;
@@ -24,39 +23,33 @@ interface AppSidebarProps {
 const sidebarItems = [
   {
     title: "View Order",
-    value: "orders",
+    value: "order-view",
+    icon: <ListOrderedIcon />,
   },
   {
     title: "Profile Setting",
     value: "profile-setting",
+    icon: <User />,
   },
 ];
 
 export function AppSidebar({ activeTab, setActiveTab, role }: AppSidebarProps) {
-  const userSubLinks = [
-    { text: "Create User", onClick: () => setActiveTab("create-user") },
-    { text: "Users", onClick: () => setActiveTab("users") },
-    { text: "Update User", onClick: () => setActiveTab("update-user") },
-  ];
-  const productSubLinks = [
-    { text: "Add Product", onClick: () => setActiveTab("add-product") },
-    { text: "View Products", onClick: () => setActiveTab("view-products") },
-    { text: "Update Product", onClick: () => setActiveTab("update-product") },
-  ];
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  // Define sub-links for "Manage Orders"
-  const orderSubLinks = [
-    { text: "View Orders", onClick: () => setActiveTab("view-orders") },
-    { text: "Pending Orders", onClick: () => setActiveTab("pending-orders") },
-    {
-      text: "Completed Orders",
-      onClick: () => setActiveTab("completed-orders"),
-    },
-  ];
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login", { replace: true });
+  };
+
+  const handleBackToHome = () => {
+    navigate("/");
+  };
 
   return (
-    <Sidebar className="w-64 h-[100%] bg-gray-900 text-white bg-inherit absolute">
+    <Sidebar className="w-64 h-[100%] bg-gray-900 text-white">
       <SidebarContent>
+        <Link to="/"></Link>
         <SidebarHeader className="text-xl font-bold p-4 uppercase">
           {role} Dashboard
         </SidebarHeader>
@@ -79,6 +72,7 @@ export function AppSidebar({ activeTab, setActiveTab, role }: AppSidebarProps) {
                       text={item.title}
                       onClick={() => setActiveTab(item.value)}
                       isActive={activeTab === item.value}
+                      icon={item.icon}
                     />
                   ))}
                 </>
@@ -87,6 +81,18 @@ export function AppSidebar({ activeTab, setActiveTab, role }: AppSidebarProps) {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarLink
+          icon={<HomeIcon />}
+          text="Home"
+          onClick={handleBackToHome}
+        />
+        <SidebarLink
+          icon={<LogOutIcon />}
+          text="Logout"
+          onClick={handleLogout}
+        />
+      </SidebarFooter>
     </Sidebar>
   );
 }

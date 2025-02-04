@@ -38,14 +38,6 @@ const routes = createBrowserRouter([
         element: <BicycleDetails />,
       },
       {
-        path: "dashboard",
-        element: (
-          <PrivateRoutes>
-            <Dashboard />
-          </PrivateRoutes>
-        ),
-      },
-      {
         path: "cart",
         element: (
           <PrivateRoutes>
@@ -82,6 +74,14 @@ const routes = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoutes>
+        <Dashboard />
+      </PrivateRoutes>
+    ),
   },
 ]);
 

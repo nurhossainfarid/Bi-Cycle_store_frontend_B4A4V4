@@ -52,7 +52,10 @@ const menuItems: MenuItem[] = [
   },
   {
     label: "Manage Order",
-    subItems: [{ label: "Orders", value: "orders", href: "" }],
+    subItems: [
+      { label: "Orders", value: "orders", href: "" },
+      { label: "Create Order", value: "create-order", href: "" },
+    ],
   },
 ];
 
@@ -61,7 +64,10 @@ interface CollapsibleMenuProps {
   setActiveTab: (tab: string) => void;
 }
 
-const CollapsibleMenu: React.FC<CollapsibleMenuProps> = ({ activeTab, setActiveTab }) => {
+const CollapsibleMenu: React.FC<CollapsibleMenuProps> = ({
+  activeTab,
+  setActiveTab,
+}) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -96,7 +102,7 @@ const CollapsibleMenu: React.FC<CollapsibleMenuProps> = ({ activeTab, setActiveT
               {item.subItems?.map((subItem, subIndex) => (
                 <button
                   key={subIndex}
-                  onClick={() => setActiveTab(subItem.value)}
+                  onClick={() => subItem.value && setActiveTab(subItem.value)}
                   className={`flex items-center p-3 w-full text-left rounded-md transition-all duration-200 hover:bg-gray-700 ${
                     activeTab === subItem.value
                       ? "bg-gray-800 text-white"

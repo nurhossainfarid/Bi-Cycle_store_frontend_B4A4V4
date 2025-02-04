@@ -3,10 +3,10 @@ import {
   useForm,
   FormProvider,
   SubmitHandler,
-  FieldValues, Resolver,
+  FieldValues,
+  Resolver,
 } from "react-hook-form";
 import { Button } from "../ui/button";
-
 
 type TFormConfig = {
   defaultValues?: Record<string, unknown>;
@@ -45,7 +45,7 @@ const CZForm = ({
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(submit)}
-        className="p-6 shadow-md rounded-md"
+        className="shadow-md rounded-md"
       >
         {children}
         <Button type="submit" className="w-full mt-4 text-white">

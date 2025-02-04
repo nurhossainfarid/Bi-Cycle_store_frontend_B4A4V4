@@ -1,8 +1,10 @@
+import { ReactNode } from "react";
+
 interface SidebarLinkProps {
   text: string;
-  icon?: string; // Can be a string or React component if you use icons like lucide-react
+  icon?: ReactNode; // Can be a string or React component if you use icons like lucide-react
   onClick: () => void;
-  isActive: boolean;
+  isActive?: boolean;
 }
 
 const SidebarLink: React.FC<SidebarLinkProps> = ({

@@ -1,33 +1,38 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { useState } from "react";
 import { JwtPayload } from "jsonwebtoken";
+
+interface CustomJwtPayload extends JwtPayload {
+  role?: string;
+}
 import { AppSidebar } from "./AppSidebar";
 import CreateBicycle from "./admin/manage-product/CreateBicycle";
-import Orders from "./admin/manage-order/Orders";
 import Users from "./admin/manage-user/Users";
 import Bicycles from "./admin/manage-product/Bicycles";
 import { useAppSelector } from "@/redux/hooks/hooks";
 import { useCurrentToken } from "@/redux/features/auth/authSlice";
 import { verifyToken } from "@/utils/verifyToken";
 import ProfileSetting from "./admin/manage-user/ProfileSetting";
+import OrderView from "./admin/manage-order/OrderView";
+import Orders from "./admin/manage-order/Orders";
 
 const Dashboard = () => {
   const token = useAppSelector(useCurrentToken);
-
-  let user;
+  let user: CustomJwtPayload | undefined;
+  user = token ? (verifyToken(token) as CustomJwtPayload) : undefined;
 
   if (token) {
-    user = verifyToken(token);
+    user = verifyToken(token) as CustomJwtPayload;
   }
   const [activeTab, setActiveTab] = useState(
     `${
       (user?.role === "admin" && "create-bicycle") ||
-      (user?.role === "customer" && "orders")
+      (user?.role === "customer" && "order-view")
     }`
   );
 
   return (
-    <SidebarProvider className="bg-gray-900 text-white relative">
+    <SidebarProvider className="text-black bg-white p-5 relative">
       <AppSidebar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -37,6 +42,7 @@ const Dashboard = () => {
         {activeTab === "create-bicycle" && <CreateBicycle />}
         {activeTab === "bicycles" && <Bicycles />}
         {activeTab === "users" && <Users />}
+        {activeTab === "order-view" && <OrderView />}
         {activeTab === "orders" && <Orders />}
         {activeTab === "profile-setting" && <ProfileSetting />}
       </div>

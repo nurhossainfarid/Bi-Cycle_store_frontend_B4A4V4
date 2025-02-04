@@ -13,7 +13,13 @@ import {
 } from "@/components/ui/popover";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useAppDispatch } from "@/redux/hooks/hooks";
-import { Command, CommandList, CommandEmpty, CommandGroup, CommandItem } from "@/components/ui/command";
+import {
+  Command,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+} from "@/components/ui/command";
 import { logout } from "@/redux/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 

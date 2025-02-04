@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableHeader,
@@ -7,21 +6,42 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
+
+import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 import { useGetOrdersQuery } from "@/redux/features/order/order";
+import { useGetUserByEmailQuery } from "@/redux/features/userManagement/users";
+import { useAppSelector } from "@/redux/hooks/hooks";
+import { OrderShow } from "@/types";
 
 const Orders = () => {
   const { data: orderData } = useGetOrdersQuery(undefined);
-  const data = orderData?.data?.map(
-    ({ _id, transaction, totalPrice, status, createdAt }: { _id: string, transaction: { id: string, method: string, bank_status: string }, totalPrice: number, status: string, createdAt: string }) => ({
-      orderId: _id,
-      transactionId: transaction.id,
-      paymentMethod: transaction.method,
-      bankStatus: transaction.bank_status,
-      totalPrice,
-      status,
-      createdAt,
-    })
-  );
+  const user = useAppSelector(selectCurrentUser);
+  const { data: userData } = useGetUserByEmailQuery(user?.email);
+  const data = orderData?.data
+    ?.filter((item: OrderShow) => item.user === userData?.data?._id)
+    .map(
+      ({
+        _id,
+        transaction,
+        totalPrice,
+        status,
+        createdAt,
+      }: {
+        _id: string;
+        transaction: { id: string; method: string; bank_status: string };
+        totalPrice: number;
+        status: string;
+        createdAt: string;
+      }) => ({
+        orderId: _id,
+        transactionId: transaction.id,
+        paymentMethod: transaction.method,
+        bankStatus: transaction.bank_status,
+        totalPrice,
+        status,
+        createdAt,
+      })
+    );
 
   return (
     <div className="p-1">

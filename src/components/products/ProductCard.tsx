@@ -14,7 +14,6 @@ import { TBicycleData } from "@/types";
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { addToCart } from "@/redux/features/cart/cartSlice";
 import { toast } from "sonner";
-import { v4 as uuidv4 } from "uuid";
 
 interface ProductCardProps {
   bicycle: TBicycleData;

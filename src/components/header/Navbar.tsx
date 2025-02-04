@@ -1,22 +1,18 @@
 import { useState } from "react";
 import { headerMenu } from "@/constants";
-import { ModeToggle } from "../mode-toggle";
-import { Button } from "../ui/button";
 import { themeHandler } from "@/utils/themeHandler";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/providers/theme-provider";
 import { Link } from "react-router-dom";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import Logo from "../../images/cylezen-logo.png";
-import { Badge } from "../ui/badge";
 import { useAppSelector } from "@/redux/hooks/hooks";
-import {
-  selectCurrentUser,
-  useCurrentToken,
-} from "@/redux/features/auth/authSlice";
-import { verifyToken } from "@/utils/verifyToken";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { useCurrentToken } from "@/redux/features/auth/authSlice";
 import { AvatarMenu } from "./AvatarMenu";
+import { verifyToken } from "@/utils/verifyToken";
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
+import { ModeToggle } from "../mode-toggle";
 
 const Navbar = () => {
   const cartData = useAppSelector((state) => state.cart);
@@ -32,7 +28,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="mx-auto h-16 flex items-center relative z-10 py-2 md:py-10 px-5 md:px-10 lg:px-20">
+    <nav className="mx-auto h-16 flex items-center relative z-10 py-2 md:pt-10 px-5 md:px-10 lg:px-20">
       {/* Logo */}
       <Link to="/">
         <img

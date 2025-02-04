@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableHeader,
@@ -8,13 +6,11 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import {
-  useDeleteOrderMutation,
-  useGetOrdersQuery,
-} from "@/redux/features/order/order";
+import { selectCurrentUser } from "@/redux/features/auth/authSlice";
+import { useGetOrdersQuery } from "@/redux/features/order/order";
+import { useGetUserByEmailQuery } from "@/redux/features/userManagement/users";
+import { useAppSelector } from "@/redux/hooks/hooks";
 import { OrderShow } from "@/types";
-import { Link } from "react-router-dom";
-import { toast } from "sonner";
 
 type OrderItem = {
   orderId: string;
@@ -26,11 +22,14 @@ type OrderItem = {
   createdAt: string;
 };
 
-const Orders = () => {
+const OrderView = () => {
   const { data: orderData } = useGetOrdersQuery(undefined);
-  const [deleteOrder] = useDeleteOrderMutation();
-  const data: OrderItem[] = orderData?.data?.map(
-    ({ _id, transaction, totalPrice, status, createdAt }: OrderShow) => ({
+  const user = useAppSelector(selectCurrentUser);
+  const { data: userData } = useGetUserByEmailQuery(user?.email);
+
+  const data: OrderItem[] = orderData?.data
+    ?.filter((item: OrderShow) => item.user === userData?.data?._id)
+    ?.map(({ _id, transaction, totalPrice, status, createdAt }: OrderShow) => ({
       orderId: _id,
       transactionId: transaction.id,
       paymentMethod: transaction.method,
@@ -38,22 +37,12 @@ const Orders = () => {
       totalPrice,
       status,
       createdAt,
-    })
-  );
-
-  const handleDelete = async (userId: string) => {
-    try {
-        await deleteOrder(userId).unwrap();
-        toast.success("User deleted successfully");
-      } catch (error) {
-        toast.error("Failed to delete user");
-      }
-    };
+    }));
 
   return (
     <div className="overflow-x-auto p-4">
       <h1 className="text-3xl text-midnight-eclipse font-bold text-center pb-5">
-        Orders
+        View Orders
       </h1>
       <Table className="w-full min-w-[600px]">
         <TableHeader className=" bg-midnight-eclipse">
@@ -78,9 +67,6 @@ const Orders = () => {
             </TableHead>
             <TableHead className="p-3 text-left text-md text-white border">
               Created At
-            </TableHead>
-            <TableHead className="p-3 text-left text-md text-white border">
-              Actions
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -121,31 +107,6 @@ const Orders = () => {
               <TableCell className="border px-4 py-2">
                 {new Date(item.createdAt).toLocaleString()}
               </TableCell>
-              <TableCell className="border px-4 py-2">
-                <div className="flex gap-2">
-                  <Link to={`/bicycle-details/${item.orderId}`}>
-                    <Button
-                      variant="outline"
-                      className="hover:text-white text-xs"
-                    >
-                      Detail
-                    </Button>
-                  </Link>
-                  <Button
-                    variant="outline"
-                    className="hover:text-white text-xs"
-                  >
-                    Update
-                  </Button>
-                  <Button
-                    variant="destructive"
-                    className="text-xs"
-                    onClick={() => handleDelete(item.orderId)}
-                  >
-                    Delete
-                  </Button>
-                </div>
-              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -154,4 +115,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default OrderView;

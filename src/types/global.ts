@@ -36,3 +36,27 @@ export type TUserFromToken = {
   iat: number;
   exp: number;
 };
+
+export type TSelectUser = {
+  email: string;
+  role: string;
+  iat: number;
+  exp: number;
+};
+
+interface Transaction {
+  id: string;
+  method: string;
+  bank_status: string;
+  user: string;
+}
+
+export interface OrderShow {
+  _id: string;
+  user: string;
+  transaction: Transaction;
+  totalPrice: number;
+  status: string;
+  createdAt: string;
+}
+

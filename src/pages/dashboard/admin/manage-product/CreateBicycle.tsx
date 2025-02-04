@@ -1,23 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import CZCheckbox from "@/components/form/CZCheckbox";
 import CZForm from "@/components/form/CZForm";
 import CZInput from "@/components/form/CZInput";
-import CZSelect from "@/components/form/CZSelect";
 import { Separator } from "@/components/ui/separator";
-import {
-  frameColorOptions,
-  frameMaterialOptions,
-  frameSizeOptions,
-  bicycleTypeOptions,
-  singleBicycleData,
-} from "@/constants";
 import { useAddBicycleMutation } from "@/redux/features/bicycleManagement/bicycle";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 const CreateBicycle = () => {
-  const { control, reset } = useForm();
-  const [addBicycle] =
-    useAddBicycleMutation();
+  const { reset } = useForm();
+  const [addBicycle] = useAddBicycleMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("Adding bicycle...");
@@ -51,7 +43,8 @@ const CreateBicycle = () => {
   };
 
   return (
-    <div>
+    <div className="px-5 bg-white">
+      <h1 className="text-3xl font-bold text-center">Create Bicycle</h1>
       <CZForm onSubmit={onSubmit}>
         <div className="flex flex-col gap-2 md:gap-5">
           {/* General Info */}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Select,
   SelectContent,
@@ -19,7 +20,7 @@ type Option = {
   disabled?: boolean;
 };
 
-const CZSelect = ({ label, name, options, disabled = false, control }) => {
+const CZSelect = ({ label, name, options, disabled = false, control }: { label: string; name: string; options: Option[]; disabled?: boolean; control: any }) => {
   return (
     <FormField
       control={control}

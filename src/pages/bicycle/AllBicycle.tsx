@@ -17,7 +17,7 @@ const AllBicycle = () => {
     );
   }
   return (
-    <div className="flex flex-col items-center gap-10 pt-10">
+    <div className="flex flex-col items-center gap-10 pt-10 pb-5 md:pb-10 px-5 md:px-10 lg:px-20">
       <h1 className="font-outfit text-xl md:text-2xl lg:text-4.5xl uppercase font-semibold text-center">
         All Products
       </h1>
