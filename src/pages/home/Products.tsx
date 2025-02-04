@@ -42,7 +42,7 @@ const Products = () => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-10">
         {randomBicycles.map((bicycle) => (
-          <ProductCard key={bicycle.name} bicycle={bicycle} />
+          <ProductCard key={bicycle._id} bicycle={bicycle} />
         ))}
       </div>
       <Button variant={"outline"} className="text-white text-lg">

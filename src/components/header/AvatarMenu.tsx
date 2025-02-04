@@ -5,13 +5,7 @@ import { LogOut, Settings, User, Check } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/Command";
+
 import {
   Popover,
   PopoverContent,
@@ -19,8 +13,9 @@ import {
 } from "@/components/ui/popover";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useAppDispatch } from "@/redux/hooks/hooks";
+import { Command, CommandList, CommandEmpty, CommandGroup, CommandItem } from "@/components/ui/command";
 import { logout } from "@/redux/features/auth/authSlice";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function AvatarMenu() {
   const [open, setOpen] = React.useState(false);
