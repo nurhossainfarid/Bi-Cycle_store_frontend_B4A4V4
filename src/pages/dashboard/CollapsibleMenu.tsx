@@ -56,7 +56,12 @@ const menuItems: MenuItem[] = [
   },
 ];
 
-const CollapsibleMenu: React.FC = ({ activeTab, setActiveTab }) => {
+interface CollapsibleMenuProps {
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+}
+
+const CollapsibleMenu: React.FC<CollapsibleMenuProps> = ({ activeTab, setActiveTab }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (

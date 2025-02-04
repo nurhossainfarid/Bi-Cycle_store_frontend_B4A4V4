@@ -111,6 +111,7 @@ const Navbar = () => {
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>CZ</AvatarFallback>
           </Avatar>
+          
         </div>
       )}
     </nav>

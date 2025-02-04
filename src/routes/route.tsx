@@ -14,6 +14,7 @@ import Cart from "@/pages/order/Cart";
 import OrderVerification from "@/pages/order/VerifyOrder";
 import OrderDetails from "@/pages/order/OrderDetails";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
+import PrivateRoutes from "@/components/layout/PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -26,11 +27,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "about",
-        element: (
-          <ProtectedRoute role="user">
-            <About />
-          </ProtectedRoute>
-        ),
+        element: <About />,
       },
       {
         path: "all-bicycles",
@@ -42,19 +39,35 @@ const routes = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <Dashboard />,
+        element: (
+          <PrivateRoutes>
+            <Dashboard />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "cart",
-        element: <Cart />,
+        element: (
+          <PrivateRoutes>
+            <Cart />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "orderDetails",
-        element: <OrderDetails />,
+        element: (
+          <PrivateRoutes>
+            <OrderDetails />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "orders/verification",
-        element: <OrderVerification />,
+        element: (
+          <PrivateRoutes>
+            <OrderVerification />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "*",

@@ -18,12 +18,13 @@ import { verifyToken } from "@/utils/verifyToken";
 interface AppSidebarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  role: string | undefined;
 }
 
 const sidebarItems = [
   {
     title: "View Order",
-    value: "view-order",
+    value: "orders",
   },
   {
     title: "Profile Setting",
@@ -31,14 +32,7 @@ const sidebarItems = [
   },
 ];
 
-export function AppSidebar({ activeTab, setActiveTab }: AppSidebarProps) {
-  const token = useAppSelector(useCurrentToken);
-  let user;
-
-  if (token) {
-    user = verifyToken(token);
-  }
-
+export function AppSidebar({ activeTab, setActiveTab, role }: AppSidebarProps) {
   const userSubLinks = [
     { text: "Create User", onClick: () => setActiveTab("create-user") },
     { text: "Users", onClick: () => setActiveTab("users") },
@@ -64,26 +58,31 @@ export function AppSidebar({ activeTab, setActiveTab }: AppSidebarProps) {
     <Sidebar className="w-64 h-[100%] bg-gray-900 text-white bg-inherit absolute">
       <SidebarContent>
         <SidebarHeader className="text-xl font-bold p-4 uppercase">
-          {user?.role} Dashboard
+          {role} Dashboard
         </SidebarHeader>
         {/* Sidebar Group */}
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
               {/* Collapsible Menu */}
-              <CollapsibleMenu
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-              />
-
-              {/* Regular Menu Items */}
-              {sidebarItems.map((item) => (
-                <SidebarLink
-                  text={item.title}
-                  onClick={() => setActiveTab(item.value)}
-                  isActive={activeTab === item.value}
+              {role === "admin" && (
+                <CollapsibleMenu
+                  activeTab={activeTab}
+                  setActiveTab={setActiveTab}
                 />
-              ))}
+              )}
+              {/* Regular Menu Items */}
+              {role === "customer" && (
+                <>
+                  {sidebarItems.map((item) => (
+                    <SidebarLink
+                      text={item.title}
+                      onClick={() => setActiveTab(item.value)}
+                      isActive={activeTab === item.value}
+                    />
+                  ))}
+                </>
+              )}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
