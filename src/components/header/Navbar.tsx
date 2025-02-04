@@ -16,6 +16,7 @@ import {
 } from "@/redux/features/auth/authSlice";
 import { verifyToken } from "@/utils/verifyToken";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { AvatarMenu } from "./AvatarMenu";
 
 const Navbar = () => {
   const cartData = useAppSelector((state) => state.cart);
@@ -107,11 +108,7 @@ const Navbar = () => {
         </div>
       ) : (
         <div className="ml-auto hidden md:flex gap-6 items-center">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>CZ</AvatarFallback>
-          </Avatar>
-          
+          <AvatarMenu />
         </div>
       )}
     </nav>

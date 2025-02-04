@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { LogOut, Settings, User, ChevronsUpDown, Check } from "lucide-react";
+import { LogOut, Settings, User, Check } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -18,28 +18,33 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { useAppDispatch } from "@/redux/hooks/hooks";
+import { logout } from "@/redux/features/auth/authSlice";
+import { Navigate, useNavigate } from "react-router-dom";
 
-const userOptions = [
-  {
-    value: "profile",
-    label: "Profile",
-    icon: <User className="mr-2 h-4 w-4" />,
-  },
-  {
-    value: "settings",
-    label: "Settings",
-    icon: <Settings className="mr-2 h-4 w-4" />,
-  },
-  {
-    value: "logout",
-    label: "Logout",
-    icon: <LogOut className="mr-2 h-4 w-4" />,
-  },
-];
-
-export function UserMenu() {
+export function AvatarMenu() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login", { replace: true });
+  };
+
+  const userOptions = [
+    {
+      value: "profile",
+      label: "Profile",
+      icon: <User className="mr-2 h-4 w-4" />,
+    },
+    {
+      value: "settings",
+      label: "Settings",
+      icon: <Settings className="mr-2 h-4 w-4" />,
+    },
+  ];
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -81,6 +86,16 @@ export function UserMenu() {
                   />
                 </CommandItem>
               ))}
+              <CommandItem key="logout" value="logout" onSelect={handleLogout}>
+                <LogOut className="mr-2 h-4 w-4" />
+                Logout
+                <Check
+                  className={cn(
+                    "ml-auto",
+                    value === "logout" ? "opacity-100" : "opacity-0"
+                  )}
+                />
+              </CommandItem>
             </CommandGroup>
           </CommandList>
         </Command>
