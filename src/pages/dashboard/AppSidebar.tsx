@@ -26,11 +26,6 @@ const sidebarItems = [
     value: "order-view",
     icon: <ListOrderedIcon />,
   },
-  {
-    title: "Profile Setting",
-    value: "profile-setting",
-    icon: <User />,
-  },
 ];
 
 export function AppSidebar({ activeTab, setActiveTab, role }: AppSidebarProps) {
@@ -77,6 +72,14 @@ export function AppSidebar({ activeTab, setActiveTab, role }: AppSidebarProps) {
                   ))}
                 </>
               )}
+              <Link to="/profileSetting">
+                <SidebarLink
+                  icon={<User />}
+                  text="Profile Setting"
+                  onClick={() => setActiveTab("profile-setting")}
+                  isActive={activeTab === "profile-setting"}
+                />
+              </Link>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

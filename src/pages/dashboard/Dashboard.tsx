@@ -12,7 +12,6 @@ import Bicycles from "./admin/manage-product/Bicycles";
 import { useAppSelector } from "@/redux/hooks/hooks";
 import { useCurrentToken } from "@/redux/features/auth/authSlice";
 import { verifyToken } from "@/utils/verifyToken";
-import ProfileSetting from "./admin/manage-user/ProfileSetting";
 import OrderView from "./admin/manage-order/OrderView";
 import Orders from "./admin/manage-order/Orders";
 
@@ -44,7 +43,6 @@ const Dashboard = () => {
         {activeTab === "users" && <Users />}
         {activeTab === "order-view" && <OrderView />}
         {activeTab === "orders" && <Orders />}
-        {activeTab === "profile-setting" && <ProfileSetting />}
       </div>
     </SidebarProvider>
   );

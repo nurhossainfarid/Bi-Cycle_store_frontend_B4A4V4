@@ -15,6 +15,7 @@ import OrderVerification from "@/pages/order/VerifyOrder";
 import OrderDetails from "@/pages/order/OrderDetails";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
 import PrivateRoutes from "@/components/layout/PrivateRoute";
+import ProfileSetting from "@/pages/profileSetting/ProfileSetting";
 
 const routes = createBrowserRouter([
   {
@@ -58,6 +59,14 @@ const routes = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <OrderVerification />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "profileSetting",
+        element: (
+          <PrivateRoutes>
+            <ProfileSetting />
           </PrivateRoutes>
         ),
       },

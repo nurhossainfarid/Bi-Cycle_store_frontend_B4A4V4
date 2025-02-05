@@ -28,7 +28,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="mx-auto h-16 flex items-center relative z-10 py-2 md:pt-10 px-5 md:px-10 lg:px-20">
+    <nav className="mx-auto h-16 flex items-center relative z-10 py-8 md:pt-10 px-5 md:px-10 lg:px-20">
       {/* Logo */}
       <Link to="/">
         <img
