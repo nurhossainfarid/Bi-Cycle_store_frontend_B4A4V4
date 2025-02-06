@@ -32,10 +32,8 @@ const CZSelect = ({
   options: Option[];
   disabled?: boolean;
 }) => {
-  const { control } = useForm();
   return (
     <FormField
-      control={control}
       name={name}
       render={({ field }) => (
         <FormItem>

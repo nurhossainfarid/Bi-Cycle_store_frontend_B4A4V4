@@ -2,17 +2,17 @@
 
 ![CycleZen](https://i.ibb.co.com/hJCjrSRZ/cicleZen.png)
 
-CycleZen is your go-to online store for top-quality bicycles, accessories, and gear. 
-From road and mountain bikes to electric and hybrid options, we offer premium products at great prices. 
-Enjoy a seamless shopping experience with secure payments and fast delivery. 
-Ride smarter, ride greener—shop CycleZen today! 
+CycleZen is your go-to online store for top-quality bicycles, accessories, and gear.
+From road and mountain bikes to electric and hybrid options, we offer premium products at great prices.
+Enjoy a seamless shopping experience with secure payments and fast delivery.
+Ride smarter, ride greener—shop CycleZen today!
 This project is an Express.js application developed with TypeScript that integrates MongoDB using Mongoose to manage a comprehensive Bicycle Store. The application is designed to streamline inventory management, handle customer orders, and calculate revenue while ensuring data integrity through robust schema validation.
 
 #### Live Deployment Link: https://bi-cycle-store-frontend-b4-a4-v4.vercel.app/
 
 #### Backend Github: https://github.com/nurhossainfarid/Bi-Cycle_store_backend_B4A4V4
 
-#### Backend Deployment Link: https://cyclezen-backend.vercel.app/
+#### Backend Deployment Link: http://localhost:5000/
 
 #### Video Explanation (Public Link): https://www.loom.com/share/ba11e7351aea4109a3653b34e5bf1685?sid=8d8fbf07-3c24-4688-964e-191cc7961a95
 
@@ -94,7 +94,7 @@ This project is an Express.js application developed with TypeScript that integra
   ```
 - Run Code
   ```bash
-   yarn run dev | 
+   yarn run dev |
    yarn dev
   ```
 

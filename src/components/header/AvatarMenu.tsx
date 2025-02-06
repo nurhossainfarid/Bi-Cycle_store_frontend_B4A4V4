@@ -12,7 +12,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { useAppDispatch } from "@/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import {
   Command,
   CommandList,
@@ -20,10 +20,13 @@ import {
   CommandGroup,
   CommandItem,
 } from "@/components/ui/command";
-import { logout } from "@/redux/features/auth/authSlice";
-import { useNavigate } from "react-router-dom";
+import { logout, selectCurrentUser } from "@/redux/features/auth/authSlice";
+import { Link, useNavigate } from "react-router-dom";
+import { useGetUserByEmailQuery } from "@/redux/features/userManagement/users";
 
 export function AvatarMenu() {
+  const user = useAppSelector(selectCurrentUser);
+  const { data: userData } = useGetUserByEmailQuery(user?.email);
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const dispatch = useAppDispatch();
@@ -33,19 +36,6 @@ export function AvatarMenu() {
     dispatch(logout());
     navigate("/login", { replace: true });
   };
-
-  const userOptions = [
-    {
-      value: "profile",
-      label: "Profile",
-      icon: <User className="mr-2 h-4 w-4" />,
-    },
-    {
-      value: "settings",
-      label: "Settings",
-      icon: <Settings className="mr-2 h-4 w-4" />,
-    },
-  ];
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -58,7 +48,7 @@ export function AvatarMenu() {
         >
           <Avatar>
             <AvatarImage src="/path-to-user-image.jpg" alt="User" />
-            <AvatarFallback>U</AvatarFallback>
+            <AvatarFallback>{userData?.data?.name?.slice(0, 2)}</AvatarFallback>
           </Avatar>
         </Button>
       </PopoverTrigger>
@@ -67,26 +57,25 @@ export function AvatarMenu() {
           <CommandList>
             <CommandEmpty>No options available.</CommandEmpty>
             <CommandGroup>
-              {userOptions.map((option) => (
+              <Link to="/profileSetting">
                 <CommandItem
-                  key={option.value}
-                  value={option.value}
+                  key="profile"
+                  value="profile"
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     setOpen(false);
-                    // Handle navigation or actions here
                   }}
                 >
-                  {option.icon}
-                  {option.label}
+                  <User className="mr-2 h-4 w-4" />
+                  Profile
                   <Check
                     className={cn(
                       "ml-auto",
-                      value === option.value ? "opacity-100" : "opacity-0"
+                      value === "profile" ? "opacity-100" : "opacity-0"
                     )}
                   />
                 </CommandItem>
-              ))}
+              </Link>
               <CommandItem key="logout" value="logout" onSelect={handleLogout}>
                 <LogOut className="mr-2 h-4 w-4" />
                 Logout

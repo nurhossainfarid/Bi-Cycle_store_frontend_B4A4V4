@@ -2,15 +2,19 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { InfoIcon, LogOutIcon, MapPin, User } from "lucide-react";
+import { LogOutIcon, MapPin, User } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { useNavigate } from "react-router-dom";
 import SidebarLink from "../dashboard/SidebarLink";
-import { logout } from "@/redux/features/auth/authSlice";
-import { useAppDispatch } from "@/redux/hooks/hooks";
+import { logout, selectCurrentUser } from "@/redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import MyProfile from "./MyProfile";
+import { useGetUserByEmailQuery } from "@/redux/features/userManagement/users";
 
 const ProfileSetting = () => {
+  const user = useAppSelector(selectCurrentUser);
+  const { data: userData } = useGetUserByEmailQuery(user?.email);
+
   const [activeTab, setActiveTab] = useState("my-profile");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -24,7 +28,7 @@ const ProfileSetting = () => {
     <div className="pb-5 md:pb-10 px-5 md:px-10 lg:px-20">
       <div className="flex flex-col md:flex-row gap-5 md:gap-10 my-5 md:pt-2">
         {/* Profile Sidebar */}
-        <div className="bg-[#170f21] px-5 py-10 w-full md:w-[450px] rounded-md">
+        <div className="bg-[#170f21] px-5 py-10 w-full md:w-[450px] rounded-md h-full">
           <div className="flex flex-col gap-5">
             <div className="flex flex-col items-center gap-1">
               <Avatar className="w-28 h-full border-4 border-bright-royal-blue p-1">
@@ -33,13 +37,19 @@ const ProfileSetting = () => {
                   alt="@shadcn"
                   className="rounded-full"
                 />
-                <AvatarFallback>CN</AvatarFallback>
+                <AvatarFallback>
+                  {userData?.data?.name?.slice(0, 1)}
+                </AvatarFallback>
               </Avatar>
-              <h1 className="md:text-xl font-outfit mt-2">Nur Hossain Farid</h1>
+              <h1 className="md:text-xl font-outfit mt-2">
+                {userData?.data?.name}
+              </h1>
               <p className="font-inter text-sm opacity-80">
-                faahsan1516@gmail.com
+                {userData?.data?.email}
               </p>
-              <p className="font-inter text-sm opacity-80">+8801841268946</p>
+              <p className="font-inter text-sm opacity-80">
+                {userData?.data?.contactNo}
+              </p>
             </div>
             <div className="flex flex-col gap-2">
               <Progress value={80} className="h-2" />
@@ -79,8 +89,8 @@ const ProfileSetting = () => {
           </div>
         </div>
         {/* content */}
-        <div className="w-full bg-[#170f21] p-8 rounded-md">
-          {activeTab === "my-profile" && <MyProfile />}
+        <div className="w-full bg-[#170f21] p-8 rounded-md h-full">
+          {activeTab === "my-profile" && <MyProfile user={userData?.data} />}
         </div>
       </div>
     </div>

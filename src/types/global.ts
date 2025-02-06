@@ -59,3 +59,36 @@ export interface OrderShow {
   status: string;
   createdAt: string;
 }
+
+export interface UserProfile {
+  _id?: string;
+  name: string;
+  email: string;
+  gender?: string;
+  dateOfBirth?: string;
+  contactNo?: string;
+  bloodGroup?: string;
+  presentAddress?: string;
+  permanentAddress?: string;
+  profileImg?: File;
+}
+
+export type TUserResponse = {
+  _id: string;
+  email: string;
+  role: string;
+  name: string;
+  Orders: string[];
+  needsPasswordChange: boolean;
+  gender?: "male" | "female" | "others";
+  dateOfBirth?: string;
+  contactNo?: string;
+  bloodGroup?: "A+" | "A-" | "B+" | "B-" | "AB+" | "AB-" | "O+" | "O-";
+  presentAddress?: string;
+  permanentAddress?: string;
+  profileImg?: string;
+  isBlocked: boolean;
+  isDeleted: boolean;
+  createdAt: string;
+  updatedAt: string;
+};

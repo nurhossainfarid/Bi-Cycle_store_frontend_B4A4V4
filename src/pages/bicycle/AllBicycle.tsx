@@ -19,6 +19,16 @@ const AllBicycle = () => {
     setSearch(event.target.value);
   };
 
+  const handleParamChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const newParam = { name: event.target.name, value: event.target.value };
+    const existingParam = params.find((param) => param.name === newParam.name);
+    if (existingParam) {
+      setParams(params.filter((param) => param.name !== newParam.name));
+    } else {
+      setParams([...params, newParam]);
+    }
+  };
+
   const handleSortChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSort(event.target.value);
   };
@@ -52,6 +62,17 @@ const AllBicycle = () => {
           onChange={handleSearchChange}
           className="p-2 border border-gray-300 text-black rounded-md"
         />
+        <select
+          value={params.find((param) => param.name === "brand")?.value || ""}
+          onChange={handleParamChange}
+          className="p-2 border border-gray-300 text-black rounded-md"
+          name="brand"
+        >
+          <option value="">All Brands</option>
+          <option value="Trek">Trek</option>
+          <option value="Giant">Giant</option>
+          <option value="Specialized">Specialized</option>
+        </select>
         <select
           value={sort}
           onChange={(value) => handleSortChange(value)}

@@ -12,7 +12,7 @@ import { logout, setUser } from "../features/auth/authSlice";
 import { toast } from "sonner";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://cyclezen-backend.vercel.app/api/v2",
+  baseUrl: "http://localhost:5000/api/v2",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
 
@@ -67,7 +67,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     console.log("Sending refresh token");
 
     const res = await fetch(
-      "https://cyclezen-backend.vercel.app/api/v2/auth/refresh-token",
+      "http://localhost:5000/api/v2/auth/refresh-token",
       {
         method: "POST",
         credentials: "include",
