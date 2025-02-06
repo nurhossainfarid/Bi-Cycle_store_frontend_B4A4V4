@@ -4,11 +4,10 @@ import CZForm from "@/components/form/CZForm";
 import CZInput from "@/components/form/CZInput";
 import { Separator } from "@/components/ui/separator";
 import { useAddBicycleMutation } from "@/redux/features/bicycleManagement/bicycle";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 
 const CreateBicycle = () => {
-  const { reset } = useForm();
   const [addBicycle] = useAddBicycleMutation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -36,7 +35,6 @@ const CreateBicycle = () => {
       console.log("Response:", res);
 
       toast.success("Bicycle added successfully!", { id: toastId });
-      reset();
     } catch (error) {
       toast.error("Failed to add bicycle", { id: toastId });
     }

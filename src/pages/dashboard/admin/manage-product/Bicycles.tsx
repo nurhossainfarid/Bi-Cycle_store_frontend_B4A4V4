@@ -13,26 +13,16 @@ import {
   useGetAllBicyclesQuery,
 } from "@/redux/features/bicycleManagement/bicycle";
 import { toast } from "sonner";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import UpdateBicycle from "./UpdateBicycle";
 
 const Bicycles = () => {
   const { data: bicyclesData } = useGetAllBicyclesQuery(undefined);
   const [deleteBicycle] = useDeleteBicycleMutation();
   const data = bicyclesData?.data?.map(
-    ({ _id, name, model, brand, quantity, price }) => ({
-      bicycleId: _id,
-      name,
-      model,
-      brand,
-      quantity,
-      price,
+    (bicycle) => ({
+      ...bicycle,
+      bicycleId: bicycle._id,
     })
   );
 
@@ -109,10 +99,7 @@ const Bicycles = () => {
                         Update
                       </Button>
                     </DialogTrigger>
-                    <DialogContent className="w-full">
-                      <DialogHeader>
-                        <DialogTitle>Update Bicycle</DialogTitle>
-                      </DialogHeader>
+                    <DialogContent className="w-[100%] max-h-[90vh] overflow-y-auto">
                       <UpdateBicycle id={item?.bicycleId} bicycle={item} />
                     </DialogContent>
                   </Dialog>
