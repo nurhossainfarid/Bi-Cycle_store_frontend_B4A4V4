@@ -13,6 +13,14 @@ import {
   useGetAllBicyclesQuery,
 } from "@/redux/features/bicycleManagement/bicycle";
 import { toast } from "sonner";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import UpdateBicycle from "./UpdateBicycle";
 
 const Bicycles = () => {
   const { data: bicyclesData } = useGetAllBicyclesQuery(undefined);
@@ -92,12 +100,22 @@ const Bicycles = () => {
                       Detail
                     </Button>
                   </Link>
-                  <Button
-                    variant="outline"
-                    className="hover:text-white text-xs"
-                  >
-                    Update
-                  </Button>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className="hover:text-white text-xs"
+                      >
+                        Update
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="w-full">
+                      <DialogHeader>
+                        <DialogTitle>Update Bicycle</DialogTitle>
+                      </DialogHeader>
+                      <UpdateBicycle id={item?.bicycleId} bicycle={item} />
+                    </DialogContent>
+                  </Dialog>
                   <Button
                     variant="destructive"
                     className="text-xs"

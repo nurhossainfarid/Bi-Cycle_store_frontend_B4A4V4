@@ -7,38 +7,13 @@ import {
   removeFromCart,
   updateQuantity,
 } from "@/redux/features/cart/cartSlice";
-import { useCreateOrderMutation } from "@/redux/features/order/order";
-import { useEffect } from "react";
-import { toast } from "sonner";
+import { Link } from "react-router-dom";
+import { SheetClose } from "@/components/ui/sheet";
 
 const Cart = () => {
   const dispatch = useAppDispatch();
   const cartData = useAppSelector((state) => state.cart);
-  const [createOrder, { isLoading, isSuccess, data, isError, error }] =
-    useCreateOrderMutation();
-
   const { items, totalQuantity, totalPrice } = cartData;
-
-  const handlePlaceOrder = async () => {
-    console.log(cartData.items);
-    await createOrder({ bicycles: cartData.items });
-  };
-
-  const toastId = "cart";
-  useEffect(() => {
-    if (isLoading) toast.loading("Processing ...", { id: toastId });
-
-    if (isSuccess) {
-      toast.success(data?.message, { id: toastId });
-      if (data?.data) {
-        setTimeout(() => {
-          window.location.href = data.data;
-        }, 1000);
-      }
-    }
-
-    if (isError) toast.error(JSON.stringify(error), { id: toastId });
-  }, [data?.data, data?.message, error, isError, isLoading, isSuccess]);
 
   return (
     <Card className="max-w-lg mx-auto">
@@ -126,9 +101,13 @@ const Cart = () => {
         </div>
 
         {items.length > 0 && (
-          <Button className="w-full mt-4 text-white" onClick={handlePlaceOrder}>
-            Proceed to Checkout
-          </Button>
+          <Link to={`/checkout`}>
+            <SheetClose>
+              <Button className="w-full mt-4 text-white">
+                Proceed to Checkout
+              </Button>
+            </SheetClose>
+          </Link>
         )}
       </CardContent>
     </Card>

@@ -12,7 +12,7 @@ This project is an Express.js application developed with TypeScript that integra
 
 #### Backend Github: https://github.com/nurhossainfarid/Bi-Cycle_store_backend_B4A4V4
 
-#### Backend Deployment Link: http://localhost:5000/
+#### Backend Deployment Link: https://cyclezen-backend.vercel.app/
 
 #### Video Explanation (Public Link): https://www.loom.com/share/ba11e7351aea4109a3653b34e5bf1685?sid=8d8fbf07-3c24-4688-964e-191cc7961a95
 

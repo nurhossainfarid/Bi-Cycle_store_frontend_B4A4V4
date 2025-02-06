@@ -16,6 +16,7 @@ import OrderDetails from "@/pages/order/OrderDetails";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
 import PrivateRoutes from "@/components/layout/PrivateRoute";
 import ProfileSetting from "@/pages/profileSetting/ProfileSetting";
+import CompareBicycles from "@/pages/bicycle/CompareBicycle";
 
 const routes = createBrowserRouter([
   {
@@ -39,10 +40,22 @@ const routes = createBrowserRouter([
         element: <BicycleDetails />,
       },
       {
+        path: "compare-bicycle",
+        element: <CompareBicycles />,
+      },
+      {
         path: "cart",
         element: (
           <PrivateRoutes>
             <Cart />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "checkout",
+        element: (
+          <PrivateRoutes>
+            <Checkout />
           </PrivateRoutes>
         ),
       },

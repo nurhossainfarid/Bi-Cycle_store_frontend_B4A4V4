@@ -7,7 +7,7 @@ import { ChangeEvent, useState } from "react";
 const AllBicycle = () => {
   const [params, setParams] = useState<TQueryParam[]>([]);
   const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("quantity");
+  const [sort, setSort] = useState("");
   const { data, isLoading } = useGetAllBicyclesQuery([
     { name: "sort", value: sort },
     ...params,
@@ -21,12 +21,12 @@ const AllBicycle = () => {
 
   const handleParamChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newParam = { name: event.target.name, value: event.target.value };
-    const existingParam = params.find((param) => param.name === newParam.name);
-    if (existingParam) {
-      setParams(params.filter((param) => param.name !== newParam.name));
-    } else {
-      setParams([...params, newParam]);
-    }
+    setParams((prevParams) => {
+      const filteredParams = prevParams.filter(
+        (param) => param.name !== newParam.name
+      );
+      return newParam.value ? [...filteredParams, newParam] : filteredParams;
+    });
   };
 
   const handleSortChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -45,14 +45,16 @@ const AllBicycle = () => {
     );
   }
 
-  const filteredBicycles = bicyclesData.filter((bicycle) =>
-    bicycle.name.toLowerCase().includes(search.toLowerCase())
+  const filteredBicycles = bicyclesData.filter(
+    (bicycle) =>
+      bicycle.name.toLowerCase().includes(search.toLowerCase()) ||
+      bicycle.brand.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
-    <div className="flex flex-col gap-5 pb-5 md:pb-10 px-5 md:px-10 lg:px-20">
+    <div className="flex flex-col gap-10 pt-5 md:pt-10 pb-5 md:pb-10 px-5 md:px-10 lg:px-20">
       <h1 className="font-outfit text-xl md:text-2xl lg:text-4.5xl uppercase font-semibold text-center">
-        All Products
+        All Bicycles
       </h1>
       <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full justify-end items-end">
         <input
@@ -63,7 +65,9 @@ const AllBicycle = () => {
           className="p-2 border border-gray-300 text-black rounded-md"
         />
         <select
-          value={params.find((param) => param.name === "brand")?.value || ""}
+          value={String(
+            params.find((param) => param.name === "brand")?.value || ""
+          )}
           onChange={handleParamChange}
           className="p-2 border border-gray-300 text-black rounded-md"
           name="brand"
@@ -74,17 +78,31 @@ const AllBicycle = () => {
           <option value="Specialized">Specialized</option>
         </select>
         <select
+          value={String(
+            params.find((param) => param.name === "type")?.value || ""
+          )}
+          onChange={handleParamChange}
+          className="p-2 border border-gray-300 text-black rounded-md"
+          name="type"
+        >
+          <option value="">All Types</option>
+          <option value="Mountain">Mountain</option>
+          <option value="Road">Road</option>
+          <option value="Hybrid">Hybrid</option>
+        </select>
+        <select
           value={sort}
-          onChange={(value) => handleSortChange(value)}
+          onChange={handleSortChange}
           className="p-2 border border-gray-300 text-black rounded-md"
           name="sort"
         >
+          <option value="">Sort by</option>
           <option value="name">Name</option>
           <option value="price">Price</option>
           <option value="quantity">Quantity</option>
         </select>
       </div>
-      <div className="flex flex-col items-center gap-10 pt-10">
+      <div className="flex flex-col items-center gap-10">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-10">
           {filteredBicycles.map((bicycle) => (
             <ProductCard key={bicycle.name} bicycle={bicycle} />

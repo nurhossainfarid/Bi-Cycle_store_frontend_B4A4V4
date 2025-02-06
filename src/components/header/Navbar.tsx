@@ -13,6 +13,12 @@ import { verifyToken } from "@/utils/verifyToken";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { ModeToggle } from "../mode-toggle";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import Cart from "@/pages/order/Cart";
 
 const Navbar = () => {
   const cartData = useAppSelector((state) => state.cart);
@@ -48,14 +54,29 @@ const Navbar = () => {
             <p className="font-inter">{menu.label}</p>
           </Link>
         ))}
-        <Link to="/cart" className="relative flex items-center space-x-2">
-          <ShoppingCart className="w-6 h-6" />
-          {cartCount > 0 && (
-            <Badge className="absolute -top-3 -right-2 bg-bright-royal-blue text-white rounded-full text-xs px-2 py-1">
-              {cartCount}
-            </Badge>
-          )}
-        </Link>
+        {user?.role === "customer" && (
+          <Link
+            to="/compare-bicycle"
+            className="relative flex items-center space-x-2"
+          >
+            Compare Tool
+          </Link>
+        )}
+        <Sheet>
+          <SheetTrigger asChild>
+            <h1 className="relative flex items-center space-x-2">
+              <ShoppingCart className="w-6 h-6" />
+              {cartCount > 0 && (
+                <Badge className="absolute -top-3 -right-2 bg-bright-royal-blue text-white rounded-full text-xs px-2 py-1">
+                  {cartCount}
+                </Badge>
+              )}
+            </h1>
+          </SheetTrigger>
+          <SheetContent className="pt-10">
+            <Cart />
+          </SheetContent>
+        </Sheet>
       </div>
 
       {/* Mobile Menu Button */}
@@ -76,14 +97,21 @@ const Navbar = () => {
               {menu.label}
             </Link>
           ))}
-          <Link to="/cart" className="relative flex items-center space-x-2">
-            <ShoppingCart className="w-6 h-6" />
-            {cartCount > 0 && (
-              <Badge className="absolute -top-3 -right-2 bg-bright-royal-blue text-white rounded-full text-xs px-2 py-1">
-                {cartCount}
-              </Badge>
-            )}
-          </Link>
+          <Sheet>
+            <SheetTrigger asChild>
+              <h1 className="relative flex items-center space-x-2">
+                <ShoppingCart className="w-6 h-6" />
+                {cartCount > 0 && (
+                  <Badge className="absolute -top-3 -right-2 bg-bright-royal-blue text-white rounded-full text-xs px-2 py-1">
+                    {cartCount}
+                  </Badge>
+                )}
+              </h1>
+            </SheetTrigger>
+            <SheetContent>
+              <Cart />
+            </SheetContent>
+          </Sheet>
         </div>
       )}
       {/* Right Section */}

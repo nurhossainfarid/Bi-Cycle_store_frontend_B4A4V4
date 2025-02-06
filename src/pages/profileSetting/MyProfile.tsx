@@ -18,7 +18,6 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 const MyProfile = ({ user }: { user: UserProfile }) => {
-  const { reset } = useForm();
   const [updateUser] = useUpdateUserMutation();
   const [isOpen, setIsOpen] = useState(false);
   const handleSubmit = async (info: any) => {
@@ -46,9 +45,8 @@ const MyProfile = ({ user }: { user: UserProfile }) => {
       console.log("Response:", res);
 
       toast.success("User updated successfully!", { id: toastId });
-      reset();
     } catch (error) {
-      toast.error("Failed to add bicycle", { id: toastId });
+      toast.error("Failed to update profile", { id: toastId });
     }
   };
   return (

@@ -16,12 +16,16 @@ type TFormConfig = {
 type TFormProps = {
   onSubmit: SubmitHandler<FieldValues>;
   children: ReactNode;
+  buttonName?: string;
+  submitDisabled?: boolean;
 } & TFormConfig;
 
 const CZForm = ({
   onSubmit,
   children,
   defaultValues,
+  buttonName,
+  submitDisabled,
   resolver,
 }: TFormProps) => {
   const formConfig: TFormConfig = {};
@@ -45,8 +49,12 @@ const CZForm = ({
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(submit)} className="rounded-md">
         {children}
-        <Button type="submit" className="w-full mt-4 text-white">
-          Submit
+        <Button
+          type="submit"
+          className="w-full mt-4 text-white"
+          disabled={submitDisabled}
+        >
+          {buttonName ?? "Submit"}
         </Button>
       </form>
     </FormProvider>

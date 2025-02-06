@@ -10,6 +10,14 @@ import { logout, selectCurrentUser } from "@/redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import MyProfile from "./MyProfile";
 import { useGetUserByEmailQuery } from "@/redux/features/userManagement/users";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import ChangePassword from "./ChangePassword";
 
 const ProfileSetting = () => {
   const user = useAppSelector(selectCurrentUser);
@@ -79,9 +87,19 @@ const ProfileSetting = () => {
               />
             </div>
             <div className="flex gap-5">
-              <Button variant="outline" className="w-full">
-                Change Password
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="w-full">
+                    Change Password
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogHeader>
+                    <DialogTitle>Change Password</DialogTitle>
+                  </DialogHeader>
+                  <ChangePassword />
+                </DialogContent>
+              </Dialog>
               <Button variant="outline" className="w-full">
                 Deactivated
               </Button>
