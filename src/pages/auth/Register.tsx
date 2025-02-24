@@ -26,6 +26,7 @@ const Register = () => {
         email: data.email,
         password: data.password,
       };
+      console.log(userInfo);
       const res = await register(userInfo).unwrap();
       toast.success("Register successful", { id: toastId, duration: 2000 });
 

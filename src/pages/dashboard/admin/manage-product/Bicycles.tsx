@@ -30,7 +30,7 @@ const Bicycles = () => {
     try {
       await deleteBicycle(bicycleId).unwrap();
       toast.success("Bicycle deleted successfully");
-    } catch (error) {
+    } catch {
       toast.error("Failed to delete bicycle");
     }
   };
