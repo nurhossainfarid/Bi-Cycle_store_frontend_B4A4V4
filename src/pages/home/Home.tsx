@@ -6,6 +6,7 @@ import UpcomingShopCategory from "./UpcomingShopCategory";
 import UpcomingService from "./UpcomingService";
 import DiscountCycle from "./DiscountCycle";
 import News from "./News";
+import Lol from "@/components/lol/Lol";
 const Home = () => {
   return (
     <div className="flex flex-col gap-16 md:gap-28 items-center justify-center my-5 md:pt-2 pb-5 md:pb-10 px-5 md:px-10 lg:px-20">
@@ -17,6 +18,7 @@ const Home = () => {
       <UpcomingService />
       <CustomerReview />
       <News />
+      <Lol />
     </div>
   );
 };
