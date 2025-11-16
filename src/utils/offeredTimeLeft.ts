@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 export const useOfferedTimeLeft = (targetDate: string): string => {
-  const calculateTimeLeft = (): string => {
+  const calculateTimeLeft = useCallback((): string => {
     const now = new Date().getTime();
     const timeLeft = new Date(targetDate).getTime() - now;
 
@@ -17,7 +17,7 @@ export const useOfferedTimeLeft = (targetDate: string): string => {
     const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
     return `${days}d ${hours}h ${minutes}m ${seconds}s`;
-  };
+  }, [targetDate]);
 
   const [timeLeft, setTimeLeft] = useState<string>(calculateTimeLeft());
 
@@ -27,7 +27,7 @@ export const useOfferedTimeLeft = (targetDate: string): string => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate]);
+  }, [calculateTimeLeft]);
 
   return timeLeft;
 };

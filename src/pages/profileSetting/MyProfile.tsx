@@ -14,7 +14,6 @@ import { useUpdateUserMutation } from "@/redux/features/userManagement/users";
 import { UserProfile } from "@/types";
 import { EditIcon } from "lucide-react";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 const MyProfile = ({ user }: { user: UserProfile }) => {

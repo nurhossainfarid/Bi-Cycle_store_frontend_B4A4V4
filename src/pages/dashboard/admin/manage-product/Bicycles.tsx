@@ -100,16 +100,18 @@ const Bicycles = () => {
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="w-[100%] max-h-[90vh] overflow-y-auto">
-                      <UpdateBicycle id={item?.bicycleId} bicycle={item} />
+                      {item?.bicycleId && <UpdateBicycle id={item.bicycleId} bicycle={item} />}
                     </DialogContent>
                   </Dialog>
-                  <Button
-                    variant="destructive"
-                    className="text-xs"
-                    onClick={() => handleDelete(item.bicycleId)}
-                  >
-                    Delete
-                  </Button>
+                  {item.bicycleId && (
+                    <Button
+                      variant="destructive"
+                      className="text-xs"
+                      onClick={() => handleDelete(item.bicycleId!)}
+                    >
+                      Delete
+                    </Button>
+                  )}
                 </div>
               </TableCell>
             </TableRow>

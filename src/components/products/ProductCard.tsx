@@ -34,6 +34,10 @@ const ProductCard: FC<ProductCardProps> = ({ bicycle }) => {
   } = bicycle;
 
   const handleAddToCart = () => {
+    if (!bicycleId) {
+      toast.error("Invalid bicycle data");
+      return;
+    }
     dispatch(
       addToCart({
         bicycle: bicycleId,

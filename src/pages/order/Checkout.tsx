@@ -35,7 +35,9 @@ const paymentOptions = [
 
 const Checkout = () => {
   const user = useAppSelector(selectCurrentUser);
-  const { data: userData } = useGetUserByEmailQuery(user?.email);
+  const { data: userData } = useGetUserByEmailQuery(user?.email || "", {
+    skip: !user?.email,
+  });
   const dispatch = useAppDispatch();
   const cartData = useAppSelector((state) => state.cart);
   const [createOrder, { isLoading, isSuccess, data, isError, error }] =
