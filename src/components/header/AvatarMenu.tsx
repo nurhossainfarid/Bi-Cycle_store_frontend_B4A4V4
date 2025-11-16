@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { LogOut, Settings, User, Check } from "lucide-react";
+import { LogOut, User, Check } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -26,7 +26,9 @@ import { useGetUserByEmailQuery } from "@/redux/features/userManagement/users";
 
 export function AvatarMenu() {
   const user = useAppSelector(selectCurrentUser);
-  const { data: userData } = useGetUserByEmailQuery(user?.email);
+  const { data: userData } = useGetUserByEmailQuery(user?.email || "", {
+    skip: !user?.email,
+  });
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const dispatch = useAppDispatch();

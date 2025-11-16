@@ -6,15 +6,18 @@ const CompareBicycles = () => {
   const { data, isLoading } = useGetAllBicyclesQuery([]);
   const bicycles = data?.data || [];
 
-  const [selectedBicycle1, setSelectedBicycle1] = useState(null);
-  const [selectedBicycle2, setSelectedBicycle2] = useState(null);
-  const [selectedBicycle3, setSelectedBicycle3] = useState(null);
+  const [selectedBicycle1, setSelectedBicycle1] = useState<typeof bicycles[0] | null>(null);
+  const [selectedBicycle2, setSelectedBicycle2] = useState<typeof bicycles[0] | null>(null);
+  const [selectedBicycle3, setSelectedBicycle3] = useState<typeof bicycles[0] | null>(null);
 
-  const handleSelectChange = (event, setSelectedBicycle) => {
+  const handleSelectChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+    setSelectedBicycle: React.Dispatch<React.SetStateAction<typeof bicycles[0] | null>>
+  ) => {
     const selected = bicycles.find(
       (bicycle) => bicycle.name === event.target.value
     );
-    setSelectedBicycle(selected);
+    setSelectedBicycle(selected || null);
   };
 
   if (isLoading) {

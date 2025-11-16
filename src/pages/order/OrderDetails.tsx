@@ -16,7 +16,9 @@ import { OrderShow } from "@/types";
 const Orders = () => {
   const { data: orderData } = useGetOrdersQuery(undefined);
   const user = useAppSelector(selectCurrentUser);
-  const { data: userData } = useGetUserByEmailQuery(user?.email);
+  const { data: userData } = useGetUserByEmailQuery(user?.email || "", {
+    skip: !user?.email,
+  });
   const data = orderData?.data
     ?.filter((item: OrderShow) => item.user === userData?.data?._id)
     .map(
@@ -58,7 +60,15 @@ const Orders = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data?.map((item) => (
+          {data?.map((item: {
+            orderId: string;
+            transactionId: string;
+            paymentMethod: string;
+            bankStatus: string;
+            totalPrice: number;
+            status: string;
+            createdAt: string;
+          }) => (
             <TableRow key={item.orderId}>
               <TableCell>{item.orderId}</TableCell>
               <TableCell>{item.transactionId}</TableCell>

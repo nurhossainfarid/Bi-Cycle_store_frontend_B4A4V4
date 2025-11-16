@@ -25,7 +25,9 @@ type OrderItem = {
 const OrderView = () => {
   const { data: orderData } = useGetOrdersQuery(undefined);
   const user = useAppSelector(selectCurrentUser);
-  const { data: userData } = useGetUserByEmailQuery(user?.email);
+  const { data: userData } = useGetUserByEmailQuery(user?.email || "", {
+    skip: !user?.email,
+  });
 
   const data: OrderItem[] = orderData?.data
     ?.filter((item: OrderShow) => item.user === userData?.data?._id)

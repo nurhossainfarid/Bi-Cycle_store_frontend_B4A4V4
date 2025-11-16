@@ -21,7 +21,9 @@ import ChangePassword from "./ChangePassword";
 
 const ProfileSetting = () => {
   const user = useAppSelector(selectCurrentUser);
-  const { data: userData } = useGetUserByEmailQuery(user?.email);
+  const { data: userData } = useGetUserByEmailQuery(user?.email || "", {
+    skip: !user?.email,
+  });
 
   const [activeTab, setActiveTab] = useState("my-profile");
   const dispatch = useAppDispatch();
@@ -108,7 +110,7 @@ const ProfileSetting = () => {
         </div>
         {/* content */}
         <div className="w-full bg-[#170f21] p-8 rounded-md h-full">
-          {activeTab === "my-profile" && <MyProfile user={userData?.data} />}
+          {activeTab === "my-profile" && userData?.data && <MyProfile user={userData.data} />}
         </div>
       </div>
     </div>

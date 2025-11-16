@@ -9,10 +9,16 @@ import {
 } from "@/components/ui/pagination";
 import { useState } from "react";
 
-export function CustomPagination({ totalPages, currentPage, onPageChange }) {
+type CustomPaginationProps = {
+  totalPages: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
+};
+
+export function CustomPagination({ totalPages, currentPage, onPageChange }: CustomPaginationProps) {
   const [page, setPage] = useState(currentPage);
 
-  const handlePageChange = (newPage) => {
+  const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= totalPages) {
       setPage(newPage);
       onPageChange(newPage);
@@ -47,11 +53,12 @@ export function CustomPagination({ totalPages, currentPage, onPageChange }) {
           </PaginationItem>
         )}
         <PaginationItem>
-          <PaginationNext
-            href="#"
-            onClick={() => handlePageChange(page + 1)}
-            disabled={page === totalPages}
-          />
+          {page < totalPages && (
+            <PaginationNext
+              href="#"
+              onClick={() => handlePageChange(page + 1)}
+            />
+          )}
         </PaginationItem>
       </PaginationContent>
     </Pagination>

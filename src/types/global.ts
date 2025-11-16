@@ -32,6 +32,7 @@ export type TQueryParam = {
 
 export type TUserFromToken = {
   userId: string;
+  email: string;
   role: string;
   iat: number;
   exp: number;
@@ -70,7 +71,7 @@ export interface UserProfile {
   bloodGroup?: string;
   presentAddress?: string;
   permanentAddress?: string;
-  profileImg?: File;
+  profileImg?: File | string;
 }
 
 export type TUserResponse = {
